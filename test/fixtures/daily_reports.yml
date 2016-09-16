@@ -1,0 +1,35 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2016-09-16
+  child_id: 1
+  poopy_diapers: 1
+  wet_diapers: 1
+  narrative: MyText
+  morning_snack: MyString
+  lunch: MyString
+  afternoon_snack: MyString
+  clothing_needed: MyText
+  other_needed: MyText
+  need_diapers: false
+  nap_start_hour: 1
+  nap_start_minutes: 1
+  nap_end_hour: 1
+  nap_end_minutes: 1
+
+two:
+  date: 2016-09-16
+  child_id: 1
+  poopy_diapers: 1
+  wet_diapers: 1
+  narrative: MyText
+  morning_snack: MyString
+  lunch: MyString
+  afternoon_snack: MyString
+  clothing_needed: MyText
+  other_needed: MyText
+  need_diapers: false
+  nap_start_hour: 1
+  nap_start_minutes: 1
+  nap_end_hour: 1
+  nap_end_minutes: 1
