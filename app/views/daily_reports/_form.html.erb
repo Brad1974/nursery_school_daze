@@ -1,0 +1,31 @@
+<%= form_for [@child, @daily_report] do |f| %>
+
+      <p><%= f.label :date %> <%= f.date_select :date, { :start_year => Time.now.year, :end_year => Time.now.year} %></p>
+      <p><%= f.label :wet_diapers %> <%= f.select :wet_diapers, ((0..10).map {|i| [i,i] }) %></p>
+      <p><%= f.label :poopy_diapers %> <%= f.select :poopy_diapers, ((0..10).map {|i| [i,i] }) %></p>
+      </br>
+
+      <label>Appetite:</label>
+      <p><%= f.select :morning_snack, (["none", "small", "normal", "large"]) %> <%= f.label "Morning snack" %> </p>
+      <p><%= f.select :lunch, (["none", "small", "normal", "large"]) %> <%= f.label "Lunch" %></p>
+      <p><%= f.select :afternoon_snack, (["none", "small", "normal", "large"]) %> <%= f.label "Afternoon Snack" %></p>
+      </br>
+
+      <label>Nap:</label>
+      <p><%= f.label "Start" %><%= f.time_select :nap_start %></p>
+      <p><%= f.label "End" %><%= f.time_select :nap_end %></p>
+      </br>
+
+      <label>Needs</label>
+      <p><%= f.label "diapers?" %> <%= f.check_box :need_diapers %></p>
+      <p><%= f.label "need clothing?" %>  <%= f.text_field :clothing_needed %></p>
+      <p><%= f.label "other?" %> <%= f.text_field :other_needed %></p>
+      </br>
+
+      <label>About My Day</label>
+      <p><%= f.text_area :narrative %></p>
+      </br>
+
+  <%= f.submit %>
+
+<% end %>
