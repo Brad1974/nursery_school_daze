@@ -1,0 +1,9 @@
+<h3>Roster</h3>
+
+<% if @children.count > 0 %>
+  <ul>
+    <%= render @children %>
+  </ul>
+<% else %>
+  <p>There are no children registered yet</p>
+<% end %>
