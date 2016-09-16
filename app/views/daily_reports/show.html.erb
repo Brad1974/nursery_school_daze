@@ -1,1 +1,27 @@
-<h3>daily report show page</h3>
+<h4>Daily Report for <%= @daily_report.child.name %></h4>
+
+  <p><b>Date:</b> <%= @daily_report.date %></p>
+
+  <label>Appetite</label>
+  <ul>
+    <li>morning snack: <%= @daily_report.morning_snack %></li>
+    <li>lunch: <%= @daily_report.lunch %></li>
+    <li>afternoon snack: <%= @daily_report.afternoon_snack %></li>
+  </ul>
+
+  <p><b>Diaper Changes:</b> </p>
+  <ul>
+    <li>Wet diapers: <%= @daily_report.wet_diapers %></li>
+    <li>Poopy diapers: <%= @daily_report.poopy_diapers %></li>
+  </ul>
+  <p><b>Nap: </b></label>Duration: <%= @daily_report.nap_duration %> (<%= @daily_report.nap_start %> to <%=@daily_report.nap_end %>)</p>
+
+  <label>About My Day</label>
+  <p><%= simple_format(@daily_report.narrative) %></p>
+
+  <%= link_to "edit report", edit_child_daily_report_path(@child, @daily_report) %></br>
+  <%= link_to "delete report", child_daily_report_path(@child, @daily_report), method: :delete, data: { confirm: "Are you sure?"} %></br>
+  <%= link_to "Back to #{@child.name}'s profile", child_path(@child) %></p>
+
+  </div>
+</div>
