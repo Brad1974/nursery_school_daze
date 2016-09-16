@@ -1,5 +1,16 @@
-<div class="col-md-8 col-md-offset-2">
-	<div class="form-content">
+<% if @child.errors.any? %>
+
+    <h5>
+        <%= pluralize(@child.errors.count, "error") %> prohibited this report from being saved:
+    </h5>
+
+    <ul>
+      <% @child.errors.each do |k, v| %>
+        <li><%= v %></li>
+      <% end %>
+    </ul>
+
+<% end %>
 
     <%= form_for @child do |f| %>
 
@@ -11,6 +22,3 @@
       <%= f.submit %>
 
     <% end %>
-
-  </div>
-</div>
