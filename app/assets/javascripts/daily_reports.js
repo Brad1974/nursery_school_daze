@@ -3,6 +3,7 @@ $(document).on("turbolinks:load", function(){
   setInput();
   setUpTimePicker();
   toggleNapFields();
+  deleteBeforeSubmit();
 
 });
 
@@ -18,7 +19,16 @@ function setUpTimePicker(){
 
 function toggleNapFields(){
   $('#nap_check').on('change', function(){
-    $('.nap').val("select")
+    // $('.nap').val("select")
     $('#nap_entry').toggle();
   })
-}
+};
+
+function deleteBeforeSubmit(){
+  $('form[class=new_daily_report], form[class=edit_daily_report]').on('submit', function(e){
+    e.preventDefault;
+    if ($('#nap_check').is(":checked"))
+    { $('.nap').val("3:00pm") };
+    this.submit
+  });
+};

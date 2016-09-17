@@ -37,7 +37,6 @@ class DailyReportsController < ApplicationController
   end
 
   def destroy
-    binding.pry
     @child.daily_reports.find(params[:id]).destroy
     redirect_to root_path
   end

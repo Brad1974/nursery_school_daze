@@ -1,6 +1,6 @@
 <h4>Daily Report for <%= @daily_report.child.name %></h4>
 
-  <p><b>Date:</b> <%= format_date(@daily_report.date) %></p>
+  <label>Date:</label> <%= format_date(@daily_report.date) %></br>
 
   <label>Appetite</label>
   <ul>
@@ -9,19 +9,20 @@
     <li>afternoon snack: <%= @daily_report.afternoon_snack %></li>
   </ul>
 
-  <p><b>Diaper Changes:</b> </p>
+  <label>Diaper Changes:</label>
   <ul>
     <li>Wet diapers: <%= @daily_report.wet_diapers %></li>
     <li>Poopy diapers: <%= @daily_report.poopy_diapers %></li>
   </ul>
-  <p><b>Nap:</b>
+
+  <label>Nap:</label>
   <% if !@daily_report.nap_duration %>
      no nap today </p>
     <% else %>
   <%= @daily_report.nap_duration %> (<%= format_time(@daily_report.nap_start) %> to <%=format_time(@daily_report.nap_end) %>)<% end %></p>
 
   <label>About My Day</label>
-  <p><%= simple_format(@daily_report.narrative) %></p>
+  <div><%= simple_format(@daily_report.narrative) %></div>
 
   <% if @daily_report.needs %>
     <label>I need:</label>

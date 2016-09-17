@@ -4,7 +4,7 @@ class DailyReport < ApplicationRecord
 
 
   def nap_duration
-    if nap_start && nap_end && (nap_end.to_i != nap_start.to_i)
+    if nap_end.to_i != nap_start.to_i
       hour = Time.at(nap_end - nap_start).utc.strftime("%-H")
       minute = Time.at(nap_end - nap_start).utc.strftime("%-M")
       if hour.to_i > 1
