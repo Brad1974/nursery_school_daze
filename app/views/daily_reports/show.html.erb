@@ -16,10 +16,10 @@
   </ul>
 
   <label>Nap:</label>
-  <% if !@daily_report.nap_duration %>
+  <% if !@daily_report.nap_statement %>
      no nap today </p>
     <% else %>
-  <%= @daily_report.nap_duration %> (<%= format_time(@daily_report.nap_start) %> to <%=format_time(@daily_report.nap_end) %>)<% end %></p>
+  <%= @daily_report.nap_statement %> (<%= format_time(@daily_report.nap_start) %> to <%=format_time(@daily_report.nap_end) %>)<% end %></p>
 
   <label>About My Day</label>
   <div><%= simple_format(@daily_report.narrative) %></div>

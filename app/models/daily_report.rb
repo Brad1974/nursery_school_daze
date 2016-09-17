@@ -3,7 +3,7 @@ class DailyReport < ApplicationRecord
 
 
 
-  def nap_duration
+  def nap_statement
     if nap_end.to_i != nap_start.to_i
       hour = Time.at(nap_end - nap_start).utc.strftime("%-H")
       minute = Time.at(nap_end - nap_start).utc.strftime("%-M")
@@ -23,6 +23,16 @@ class DailyReport < ApplicationRecord
     needs_array << self.other_needed if !self.other_needed.empty?
     needs_array << "diapers" if self.need_diapers
     return needs_array
+  end
+
+  def nap_duration
+    if nap_end.to_i != nap_start.to_i
+      start = Time.at(nap_start)
+      ending = Time.at(nap_end)
+      return (ending - start)/3600
+    else
+      return 0
+    end
   end
 
 end

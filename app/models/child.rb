@@ -15,4 +15,12 @@ class Child < ApplicationRecord
     self.first_name + " " +self.last_name
   end
 
+  def nap_average
+  nap_array = (self.daily_reports.collect{|d| d.nap_duration})
+  total = (nap_array.inject(0){|sum, x| sum + x })
+  if total > 0
+    return total / nap_array.count
+  end
+end
+
 end
