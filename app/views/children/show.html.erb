@@ -12,9 +12,7 @@
 <% if @child.daily_reports.empty? %>
   <p> There are none yet </p>
 <% else %>
-  <% @child.daily_reports.each do |d| %>
-    <li><%= link_to format_date(d.date), child_daily_report_path(@child, d) %></li>
-  <% end %>
+  <%= render @child.daily_reports %>
 <% end %>
 </br>
 
