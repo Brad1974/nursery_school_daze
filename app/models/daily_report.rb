@@ -1,19 +1,12 @@
 class DailyReport < ApplicationRecord
   belongs_to :child
 
-  before_create :set_nap
 
-  def set_nap
-    self.nap_start = Time.now
-    self.nap_end = Time.now
-  end
 
   def nap_duration
-    binding.pry
     if nap_start && nap_end && (nap_end.to_i != nap_start.to_i)
       hour = Time.at(nap_end - nap_start).utc.strftime("%-H")
-      minute = Time.at(nap_end - nap_start).utc.strftime("%M")
-      time = Time.at(nap_end - nap_start).utc.strftime("%-H:%M")
+      minute = Time.at(nap_end - nap_start).utc.strftime("%-M")
       if hour.to_i > 1
         return "Your child slept #{hour} hours and #{minute} minutes"
       elsif hour.to_i == 1

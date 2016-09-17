@@ -18,7 +18,7 @@
   <% if !@daily_report.nap_duration %>
      no nap today </p>
     <% else %>
-  <p><b> Duration: </b><%= @daily_report.nap_duration %> (<%= format_time(@daily_report.nap_start) %> to <%=format_time(@daily_report.nap_end) %>)<% end %></p>
+  <%= @daily_report.nap_duration %> (<%= format_time(@daily_report.nap_start) %> to <%=format_time(@daily_report.nap_end) %>)<% end %></p>
 
   <label>About My Day</label>
   <p><%= simple_format(@daily_report.narrative) %></p>
