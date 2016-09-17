@@ -14,14 +14,20 @@
     <li>Wet diapers: <%= @daily_report.wet_diapers %></li>
     <li>Poopy diapers: <%= @daily_report.poopy_diapers %></li>
   </ul>
-  <p><b>Nap: </b></label>Duration: <%= @daily_report.nap_duration %> (<%= format_time(@daily_report.nap_start) %> to <%=format_time(@daily_report.nap_end) %>)</p>
+  <p><b>Nap: <% if @daily_report.nap_duration %></b></label>Duration: <%= @daily_report.nap_duration %> (<%= format_time(@daily_report.nap_start) %> to <%=format_time(@daily_report.nap_end) %>)<% end %></p>
 
   <label>About My Day</label>
   <p><%= simple_format(@daily_report.narrative) %></p>
 
+  <% if @daily_report.needs %>
+    <label>I need:</label>
+    <ul>
+      <% @daily_report.needs.each do |n| %>
+        <li><%= n %></li>
+      <% end %>
+    </ul>
+    <% end %>
+
   <%= link_to "edit report", edit_child_daily_report_path(@child, @daily_report) %></br>
   <%= link_to "delete report", child_daily_report_path(@child, @daily_report), method: :delete, data: { confirm: "Are you sure?"} %></br>
   <%= link_to "Back to #{@child.name}'s profile", child_path(@child) %></p>
-
-  </div>
-</div>
