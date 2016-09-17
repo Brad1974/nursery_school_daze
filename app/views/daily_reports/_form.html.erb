@@ -12,8 +12,11 @@
       </br>
 
       <label>Nap:</label>
-      <p><%= f.label "Start:" %> <%= f.text_field :nap_start, class: 'nap' %></p>
-      <p><%= f.label "End:" %> <%= f.text_field :nap_end, class: 'nap' %></p>
+      <p>No nap today: <input type="checkbox" id="nap_check"></p>
+      <div id="nap_entry">
+      <p><%= f.label "Start:" %> <%= f.text_field :nap_start, class: 'nap', value: format_time(f.object.nap_start) %></p>
+      <p><%= f.label "End:" %> <%= f.text_field :nap_end, class: 'nap', value: format_time(f.object.nap_end) %></p>
+      </div>
       </br>
 
       <label>Needs</label>

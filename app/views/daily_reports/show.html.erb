@@ -14,7 +14,11 @@
     <li>Wet diapers: <%= @daily_report.wet_diapers %></li>
     <li>Poopy diapers: <%= @daily_report.poopy_diapers %></li>
   </ul>
-  <p><b>Nap: <% if @daily_report.nap_duration %></b></label>Duration: <%= @daily_report.nap_duration %> (<%= format_time(@daily_report.nap_start) %> to <%=format_time(@daily_report.nap_end) %>)<% end %></p>
+  <p><b>Nap:</b>
+  <% if !@daily_report.nap_duration %>
+     no nap today </p>
+    <% else %>
+  <p><b> Duration: </b><%= @daily_report.nap_duration %> (<%= format_time(@daily_report.nap_start) %> to <%=format_time(@daily_report.nap_end) %>)<% end %></p>
 
   <label>About My Day</label>
   <p><%= simple_format(@daily_report.narrative) %></p>

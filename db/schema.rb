@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160916202409) do
+ActiveRecord::Schema.define(version: 20160917060004) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,10 +36,10 @@ ActiveRecord::Schema.define(version: 20160916202409) do
     t.text     "clothing_needed"
     t.text     "other_needed"
     t.boolean  "need_diapers"
-    t.time     "nap_start"
-    t.time     "nap_end"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.time     "nap_start",       default: '2000-01-01 13:00:00'
+    t.time     "nap_end",         default: '2000-01-01 13:00:00'
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
   end
 
 end
