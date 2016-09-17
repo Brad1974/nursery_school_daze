@@ -1,6 +1,29 @@
 class DailyReport < ApplicationRecord
   belongs_to :child
 
+  validates :narrative, presence: { message: "You must enter a narrative" }
+  validate :not_future_date
+  validate :unique_date, on: :create
+  validate :consistent_time
+
+def consistent_time
+  if nap_end <= nap_start
+    errors.add(:nap_end, "Your nap ended before it even started!")
+  end
+end
+
+def not_future_date
+  if date > Date.today
+    errors.add(:date, "You can't write a report for a future date")
+  end
+end
+
+def unique_date
+  if self.child.daily_reports.find {|d| d.date == date && d.id != nil}
+    errors.add(:date, "Looks like you already submitted a report for this date.")
+  end
+end
+
 
 
   def nap_statement

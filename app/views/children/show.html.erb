@@ -2,7 +2,7 @@
 
 <p>Birthdate: <%= format_date(@child.birthdate) %></p>
 <p>Parents Email: <%= @child.email %></p>
-<p>Average nap duration: <%= @child.nap_average.round(2) %> hours </p>
+<p>Average nap duration: <% if @child.nap_average %> <%= @child.nap_average.round(2) %> hours </p> <% else %> no naps recorded </p> <% end %>
 
 <%= link_to "edit profile", edit_child_path(@child) %> |
 <%= link_to "delete profile", child_path(@child), method: :delete, data: { confirm: "Are you sure?"} %></br>

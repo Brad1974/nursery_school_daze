@@ -1,3 +1,13 @@
+<% if @daily_report.errors.any? %>
+
+  <h4> Some errors prohibited this report from being saved: </h4>
+
+    <% @daily_report.errors.each do |k,v| %>
+      <li><%= v %></li>
+    <% end %>
+
+<% end %>
+
 <%= form_for [@child, @daily_report] do |f| %>
 
       <p><%= f.label :date %> <%= f.date_select :date, { :start_year => Time.now.year, :end_year => Time.now.year} %></p>
