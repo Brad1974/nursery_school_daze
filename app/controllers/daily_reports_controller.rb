@@ -14,6 +14,7 @@ class DailyReportsController < ApplicationController
   end
 
   def create
+    binding.pry
     @daily_report = @child.daily_reports.build(daily_report_params)
     if @daily_report.save
       redirect_to child_daily_report_path(@child, @daily_report), notice: "report generated"

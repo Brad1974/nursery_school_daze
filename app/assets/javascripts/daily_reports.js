@@ -29,8 +29,16 @@ function toggleNapFields(){
 function deleteBeforeSubmit(){
   $('form[class=new_daily_report], form[class=edit_daily_report]').on('submit', function(e){
     e.preventDefault;
+    debugger;
     if ($('#nap_check').is(":checked"))
-    { $('.nap').val("3:00am") };
+      { $('.nap').val("3:00am") };
+    if (!$('#nap_check').is(":checked"))
+      { $('.nap').each(function(){
+        if ( $(this).val() === "select" ) { $(this).val("3:00am")}
+      }) }
+      debugger;
+
+
     this.submit
   });
 };
