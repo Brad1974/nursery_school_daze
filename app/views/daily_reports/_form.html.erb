@@ -39,6 +39,15 @@
       <p><%= f.text_area :narrative %></p>
       </br>
 
+      <div id='kind_acts'>
+        <%= f.fields_for :kind_acts do |kind_act| %>
+          <%= render 'kind_act_fields', f: kind_act %>
+        <% end %>
+        <div class='links'>
+          <p><b><%= link_to_add_association 'Click here to add "kind act" observation', f, :kind_acts %></b></p>
+        </div>
+      </div>
+
   <%= f.submit :class => 'daily_report_submit'%>
 
 <% end %>

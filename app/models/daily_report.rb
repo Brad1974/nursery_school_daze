@@ -1,5 +1,7 @@
 class DailyReport < ApplicationRecord
   belongs_to :child
+  has_many :kind_acts
+  accepts_nested_attributes_for :kind_acts, reject_if: :all_blank, allow_destroy: true
 
   validates :narrative, presence: { message: "You must enter a narrative" }
   validate :not_future_date
@@ -7,7 +9,7 @@ class DailyReport < ApplicationRecord
   validate :consistent_time
 
 def consistent_time
-  if nap_end <= nap_start
+  if (nap_end <= nap_start) && (nap_start != "Sat, 01 Jan 2000 03:00:00 UTC +00:00") && (nap_start != "select")
     errors.add(:nap_end, "Your nap ended before it even started!")
   end
 end

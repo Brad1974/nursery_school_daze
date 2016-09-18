@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160917132554) do
+ActiveRecord::Schema.define(version: 20160918151017) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,15 @@ ActiveRecord::Schema.define(version: 20160917132554) do
     t.time     "nap_end",         default: '2000-01-01 13:00:00'
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
+  end
+
+  create_table "kind_acts", force: :cascade do |t|
+    t.text     "act"
+    t.integer  "giver_id"
+    t.integer  "recipient_id"
+    t.integer  "daily_report_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "users", force: :cascade do |t|

@@ -28,7 +28,7 @@ function deleteBeforeSubmit(){
   $('form[class=new_daily_report], form[class=edit_daily_report]').on('submit', function(e){
     e.preventDefault;
     if ($('#nap_check').is(":checked"))
-    { $('.nap').val("3:00pm") };
+    { $('.nap').val("3:00am") };
     this.submit
   });
 };

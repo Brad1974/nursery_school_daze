@@ -1,0 +1,10 @@
+<div class='nested-fields'>
+  <div class="field">
+    <%= f.label "Describe Act:" %></br>
+    <%= f.text_area :act %></br>
+    <%= f.hidden_field :giver_id, value: @daily_report.child_id %>
+    <%= f.label "Who was the recipient of the kind act?" %>
+    <%= f.collection_select :recipient_id, Child.all.reject{|c| c == @child}, :id, :name, include_blank: 'Choose a child' %>
+  </div>
+  <%= link_to_remove_association "remove kind_act", f %>
+</div>
