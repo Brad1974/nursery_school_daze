@@ -21,9 +21,10 @@
       </div>
       <p class="text-center" style="color:brown">signed in as: <%= current_user.email %></p>
     <% end %>
-    <p class="alert"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+    <p> <span class="alert"><%= notice %></span><span class="alert"><%= alert %></span></p>
+    <div class="col-md-8 col-md-offset-2">
+      <%= yield %>
+    </div>
   </body>
 
 </html>

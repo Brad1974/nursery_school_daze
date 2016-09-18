@@ -1,9 +1,11 @@
-<h3>Roster</h3>
+<h3 class="top_banner">Roster</h3>
 
-<% if @children.count > 0 %>
-  <ul>
-    <%= render @children %>
-  </ul>
-<% else %>
-  <p>There are no children registered yet</p>
-<% end %>
+	<div class="main-content">
+    <% if @children.count > 0 %>
+      <ul>
+        <%= render @children %>
+      </ul>
+    <% else %>
+  	 <p>There are no children registered yet</p>
+    <% end %>
+  </div>

@@ -8,6 +8,9 @@ $(document).on("turbolinks:load", function(){
 });
 
 function setInput(){
+  $('.nap').each(function(){
+    if ( $(this).val() === "12:00am" ) { $(this).val("select")}
+  })
   if ( $('.nap:last').val() === $('.nap:first').val() )
     {$('.nap').val("select")};
   };
@@ -19,7 +22,6 @@ function setUpTimePicker(){
 
 function toggleNapFields(){
   $('#nap_check').on('change', function(){
-    // $('.nap').val("select")
     $('#nap_entry').toggle();
   })
 };

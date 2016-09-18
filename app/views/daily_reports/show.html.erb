@@ -1,5 +1,6 @@
-<h4>Daily Report for <%= @daily_report.child.name %></h4>
+<h3 class="top_banner">Daily Report for <%= @daily_report.child.name %></h4>
 
+<div class="main-content">
   <label>Date:</label> <%= format_date(@daily_report.date) %></br>
 
   <label>Appetite</label>
@@ -24,7 +25,17 @@
   <label>About My Day</label>
   <div><%= simple_format(@daily_report.narrative) %></div>
 
-  <% if @daily_report.needs %>
+  <% if @daily_report.kind_acts.count > 0 %>
+    	<p><b>Observed Acts of Kindess</b></p>
+    	<ul>
+        <% @daily_report.kind_acts.each do |ka| %>
+    	   <li><%= ka.act %></li>
+         <ul><li>recipient of act: <%= ka.recipient.name %></li></ul>
+         <% end %>
+    	</ul>
+    <% end %>
+
+  <% if !@daily_report.needs.empty? %>
     <label>I need:</label>
     <ul>
       <% @daily_report.needs.each do |n| %>
@@ -36,3 +47,4 @@
   <%= link_to "edit report", edit_child_daily_report_path(@child, @daily_report) %></br>
   <%= link_to "delete report", child_daily_report_path(@child, @daily_report), method: :delete, data: { confirm: "Are you sure?"} %></br>
   <%= link_to "Back to #{@child.name}'s profile", child_path(@child) %></p>
+</div>

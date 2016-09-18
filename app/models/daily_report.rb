@@ -10,7 +10,7 @@ class DailyReport < ApplicationRecord
 
 def consistent_time
   if (nap_end <= nap_start) && (nap_start != "Sat, 01 Jan 2000 03:00:00 UTC +00:00") && (nap_start != "select")
-    errors.add(:nap_end, "Your nap ended before it even started!")
+    errors.add(:nap_end, "Your nap start and end times are invalid")
   end
 end
 

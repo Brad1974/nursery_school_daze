@@ -8,46 +8,50 @@
 
 <% end %>
 
-<%= form_for [@child, @daily_report] do |f| %>
+<div class="form-content">
 
-      <p><%= f.label :date %> <%= f.date_select :date, { :start_year => Time.now.year, :end_year => Time.now.year} %></p>
-      <p><%= f.label :wet_diapers %> <%= f.select :wet_diapers, ((0..10).map {|i| [i,i] }) %></p>
-      <p><%= f.label :poopy_diapers %> <%= f.select :poopy_diapers, ((0..10).map {|i| [i,i] }) %></p>
-      </br>
+  <%= form_for [@child, @daily_report] do |f| %>
 
-      <label>Appetite:</label>
-      <p><%= f.select :morning_snack, (["none", "small", "normal", "large"]) %> <%= f.label "Morning snack" %> </p>
-      <p><%= f.select :lunch, (["none", "small", "normal", "large"]) %> <%= f.label "Lunch" %></p>
-      <p><%= f.select :afternoon_snack, (["none", "small", "normal", "large"]) %> <%= f.label "Afternoon Snack" %></p>
-      </br>
+        <p><%= f.label :date %> <%= f.date_select :date, { :start_year => Time.now.year, :end_year => Time.now.year} %></p>
+        <p><%= f.label :wet_diapers %> <%= f.select :wet_diapers, ((0..10).map {|i| [i,i] }) %></p>
+        <p><%= f.label :poopy_diapers %> <%= f.select :poopy_diapers, ((0..10).map {|i| [i,i] }) %></p>
+        </br>
 
-      <label>Nap:</label>
-      <p>No nap today: <input type="checkbox" id="nap_check"></p>
-      <div id="nap_entry">
-      <p><%= f.label "Start:" %> <%= f.text_field :nap_start, class: 'nap', value: format_time(f.object.nap_start) %></p>
-      <p><%= f.label "End:" %> <%= f.text_field :nap_end, class: 'nap', value: format_time(f.object.nap_end) %></p>
-      </div>
-      </br>
+        <label>Appetite:</label>
+        <p><%= f.select :morning_snack, (["none", "small", "normal", "large"]) %> <%= f.label "Morning snack" %> </p>
+        <p><%= f.select :lunch, (["none", "small", "normal", "large"]) %> <%= f.label "Lunch" %></p>
+        <p><%= f.select :afternoon_snack, (["none", "small", "normal", "large"]) %> <%= f.label "Afternoon Snack" %></p>
+        </br>
 
-      <label>Needs</label>
-      <p><%= f.label "diapers?" %> <%= f.check_box :need_diapers %></p>
-      <p><%= f.label "need clothing?" %>  <%= f.text_field :clothing_needed %></p>
-      <p><%= f.label "other?" %> <%= f.text_field :other_needed %></p>
-      </br>
-
-      <label>About My Day</label>
-      <p><%= f.text_area :narrative %></p>
-      </br>
-
-      <div id='kind_acts'>
-        <%= f.fields_for :kind_acts do |kind_act| %>
-          <%= render 'kind_act_fields', f: kind_act %>
-        <% end %>
-        <div class='links'>
-          <p><b><%= link_to_add_association 'Click here to add "kind act" observation', f, :kind_acts %></b></p>
+        <label>Nap:</label>
+        <p>No nap today: <input type="checkbox" id="nap_check"></p>
+        <div id="nap_entry">
+        <p><%= f.label "Start:" %> <%= f.text_field :nap_start, class: 'nap', value: format_time(f.object.nap_start) %></p>
+        <p><%= f.label "End:" %> <%= f.text_field :nap_end, class: 'nap', value: format_time(f.object.nap_end) %></p>
         </div>
-      </div>
+        </br>
 
-  <%= f.submit :class => 'daily_report_submit'%>
+        <label>Needs</label>
+        <p><%= f.label "diapers?" %> <%= f.check_box :need_diapers %></p>
+        <p><%= f.label "need clothing?" %>  <%= f.text_field :clothing_needed %></p>
+        <p><%= f.label "other?" %> <%= f.text_field :other_needed %></p>
+        </br>
 
-<% end %>
+        <label>About My Day</label>
+        <p><%= f.text_area :narrative %></p>
+        </br>
+
+        <div id='kind_acts'>
+          <%= f.fields_for :kind_acts do |kind_act| %>
+            <%= render 'kind_act_fields', f: kind_act %>
+          <% end %>
+          <div class='links'>
+            <p><b><%= link_to_add_association 'Click here to add "kind act" observation', f, :kind_acts %></b></p>
+          </div>
+        </div>
+
+    <%= f.submit :class => 'daily_report_submit'%>
+
+  <% end %>
+
+</div>
