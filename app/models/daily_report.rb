@@ -9,8 +9,9 @@ class DailyReport < ApplicationRecord
   validate :consistent_time
 
   def consistent_time
-    if (nap_end <= nap_start) && (nap_start != "Sat, 01 Jan 2000 03:00:00 UTC +00:00") && (nap_start != "select")
-      errors.add(:nap_end, "Your nap start and end times are invalid")
+    if (no_nap_today == false) && ( (nap_end <= nap_start) || (nap_start == "Sat, 01 Jan 2000 03:00:00 UTC +00:00" || nap_end == "Sat, 01 Jan 2000 03:00:00 UTC +00:00"))
+      errors.add(:nap_start, "Your nap start and end times are invalid")
+      errors.add(:nap_end, "")
     end
   end
 
