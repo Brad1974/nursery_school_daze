@@ -35,13 +35,16 @@
     	</ul>
     <% end %>
 
+  <label>Supplies Needed: </label>
   <% if !@daily_report.needs.empty? %>
-    <label>I need:</label>
+
     <ul>
       <% @daily_report.needs.each do |n| %>
         <li><%= n %></li>
       <% end %>
     </ul>
+    <% else %>
+     nothing! </p>
     <% end %>
 
   <%= link_to "edit report", edit_child_daily_report_path(@child, @daily_report) %></br>
