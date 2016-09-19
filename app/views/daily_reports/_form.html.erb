@@ -2,9 +2,12 @@
 
   <h4> Some errors prohibited this report from being saved: </h4>
 
-    <% @daily_report.errors.each do |k,v| %>
+  <% @daily_report.errors.each do |k,v| %>
+    <% if !v.empty? %>
       <li><%= v %></li>
     <% end %>
+  <% end %>
+
 
 <% end %>
 
