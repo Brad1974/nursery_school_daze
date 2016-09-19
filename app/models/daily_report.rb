@@ -8,23 +8,23 @@ class DailyReport < ApplicationRecord
   validate :unique_date, on: :create
   validate :consistent_time
 
-def consistent_time
-  if (nap_end <= nap_start) && (nap_start != "Sat, 01 Jan 2000 03:00:00 UTC +00:00") && (nap_start != "select")
-    errors.add(:nap_end, "Your nap start and end times are invalid")
+  def consistent_time
+    if (nap_end <= nap_start) && (nap_start != "Sat, 01 Jan 2000 03:00:00 UTC +00:00") && (nap_start != "select")
+      errors.add(:nap_end, "Your nap start and end times are invalid")
+    end
   end
-end
 
-def not_future_date
-  if date > Date.today
-    errors.add(:date, "You can't write a report for a future date")
+  def not_future_date
+    if date > Date.today
+      errors.add(:date, "You can't write a report for a future date")
+    end
   end
-end
 
-def unique_date
-  if self.child.daily_reports.find {|d| d.date == date && d.id != nil}
-    errors.add(:date, "Looks like you already submitted a report for this date.")
+  def unique_date
+    if self.child.daily_reports.find {|d| d.date == date && d.id != nil}
+      errors.add(:date, "Looks like you already submitted a report for this date.")
+    end
   end
-end
 
 
 

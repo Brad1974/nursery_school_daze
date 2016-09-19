@@ -23,8 +23,8 @@
         <p><%= f.select :afternoon_snack, (["none", "small", "normal", "large"]) %> <%= f.label "Afternoon Snack" %></p>
         </br>
 
-        <label>Nap:</label>
-        <p>No nap today: <input type="checkbox" id="nap_check"></p>
+        <label>Nap:</label></br>
+        <%= f.label "no_nap_today:" %><%= f.check_box :no_nap_today, id: "nap_check" %>
         <div id="nap_entry">
         <p><%= f.label "Start:" %> <%= f.text_field :nap_start, class: 'nap', value: format_time(f.object.nap_start) %></p>
         <p><%= f.label "End:" %> <%= f.text_field :nap_end, class: 'nap', value: format_time(f.object.nap_end) %></p>
