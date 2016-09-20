@@ -32,6 +32,7 @@ gem 'dotenv-rails', '~> 2.1', '>= 2.1.1'
 gem 'pry'
 gem 'cocoon', '~> 1.2', '>= 1.2.9'
 gem 'rails_12factor', group: :production
+gem 'pundit'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
