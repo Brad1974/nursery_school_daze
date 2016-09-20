@@ -10,16 +10,26 @@
 
   <body>
     <div class="container"</div>
-    <div class="top_banner"><h1>School Days</h1></div>
-    <% if user_signed_in? %>
-      <div class="navbar">
-        <ul class = "nav_ul">
-          <li><%= link_to "Child Roster", children_path %></li>
-          <li><%= link_to "register new child", new_child_path %></li>
-          <li><%= link_to "sign out", destroy_user_session_path, method: "delete"  %></li>
-        </ul>
+      <div class="top_banner">
+        <%= image_tag "m_logo.gif" %>
+        <h1>School Days</h1>
       </div>
-      <p class="text-center" style="color:brown">signed in as: <%= current_user.email %> | access level: <%= current_user.role %></p>
+      <% if user_signed_in? %>
+        <div class="navbar">
+          <ul class = "nav_ul">
+            <% if current_user.user? %>
+              <li><%= link_to "Your Enrolled Children", children_path %></li>
+            <% elsif current_user.admin? %>
+              <li><%= link_to "Roster", children_path %></li>
+              <li><%= link_to "Register new child", new_child_path %></li>
+            <% end %>
+            <li><%= link_to "Announcements", page_path("announcements") %></li>
+            <li><%= link_to "Parent Directory", page_path('parent_directory') %></li>
+            <li><%= link_to "sign out", destroy_user_session_path, method: "delete"  %></li>
+
+          </ul>
+        </div>
+    <p class="text-center" style="color:brown">signed in as: <%= current_user.email %> | access level: <%= current_user.role %></p>
     <% end %>
     <p> <span class="alert"><%= notice %></span><span class="alert"><%= alert %></span></p>
     <div class="col-md-8 col-md-offset-2">

@@ -33,6 +33,7 @@ gem 'pry'
 gem 'cocoon', '~> 1.2', '>= 1.2.9'
 gem 'rails_12factor', group: :production
 gem 'pundit'
+gem "high_voltage"
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

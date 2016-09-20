@@ -3,9 +3,6 @@ class ChildrenController < ApplicationController
   before_action :set_child, except: [:index, :new, :create]
 
   def index
-    # @children = Child.all
-    # authorize Child
-    # @children = Child.all
     @children = policy_scope(Child)
   end
 
