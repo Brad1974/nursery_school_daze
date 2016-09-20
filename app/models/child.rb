@@ -1,8 +1,9 @@
 class Child < ApplicationRecord
+  belongs_to :user, :optional => true
   has_many :daily_reports, dependent: :destroy
   has_many :kind_acts, :class_name => KindAct, :foreign_key => 'giver_id'
   has_many :gifts, :class_name => KindAct, :foreign_key => 'recipient_id'
-  
+
   validates :first_name, presence: { message: "You must enter a first name" }
   validates :last_name, presence: { message: "You must enter a last name" }
   validates :last_name, uniqueness: {scope: :first_name, message: "A child with that name is already enrolled" }

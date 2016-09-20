@@ -19,7 +19,7 @@
           <li><%= link_to "sign out", destroy_user_session_path, method: "delete"  %></li>
         </ul>
       </div>
-      <p class="text-center" style="color:brown">signed in as: <%= current_user.email %></p>
+      <p class="text-center" style="color:brown">signed in as: <%= current_user.email %> | access level: <%= current_user.role %></p>
     <% end %>
     <p> <span class="alert"><%= notice %></span><span class="alert"><%= alert %></span></p>
     <div class="col-md-8 col-md-offset-2">

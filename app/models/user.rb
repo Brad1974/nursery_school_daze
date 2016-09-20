@@ -1,8 +1,9 @@
 class User < ApplicationRecord
+  has_many :children
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  enum role: [:viewer, :admin]
+  enum role: [:user, :admin]
 end

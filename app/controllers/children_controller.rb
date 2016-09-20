@@ -1,20 +1,26 @@
 class ChildrenController < ApplicationController
+  before_action :authenticate_user!
+  before_action :set_child, except: [:index, :new, :create]
 
   def index
-    @children = Child.all
-    @child = Child.new
+    # @children = Child.all
+    # authorize Child
+    # @children = Child.all
+    @children = policy_scope(Child)
   end
 
   def show
-    @child = Child.find(params[:id])
+    authorize @child
   end
 
   def new
     @child = Child.new
+    authorize @child
   end
 
   def create
     @child = Child.new(child_params)
+    authorize @child
     if @child.save
       redirect_to children_path
     else
@@ -23,11 +29,11 @@ class ChildrenController < ApplicationController
   end
 
   def edit
-    @child = Child.find(params[:id])
+    authorize @child
   end
 
   def update
-    @child = Child.find(params[:id])
+    authorize @child
     if @child.update(child_params)
       redirect_to child_path(@child)
     else
@@ -36,7 +42,8 @@ class ChildrenController < ApplicationController
   end
 
   def destroy
-    Child.find(params[:id]).destroy
+    authorize @child
+    @child.destroy
     redirect_to root_path
   end
 
@@ -44,6 +51,10 @@ class ChildrenController < ApplicationController
 
   def child_params
     params.require(:child).permit(:first_name, :last_name, :birthdate, :email)
+  end
+
+  def set_child
+    @child = Child.find(params[:id])
   end
 
 end
