@@ -1,8 +1,8 @@
 class DailyReportsController < ApplicationController
   before_action :set_child
+  before_action :set_daily_report, except: [:index, :new, :create]
 
   def show
-    @daily_report = @child.daily_reports.find(params[:id])
     authorize @daily_report
   end
 
@@ -12,10 +12,12 @@ class DailyReportsController < ApplicationController
 
   def new
     @daily_report = @child.daily_reports.build
+    authorize @daily_report
   end
 
   def create
     @daily_report = @child.daily_reports.build(daily_report_params)
+    authorize @daily_report
     if @daily_report.save
       redirect_to child_daily_report_path(@child, @daily_report), notice: "report generated"
     else
@@ -24,12 +26,12 @@ class DailyReportsController < ApplicationController
   end
 
   def edit
-    @daily_report = @child.daily_reports.find(params[:id])
     authorize @daily_report
   end
 
   def update
-    @daily_report = @child.daily_reports.find(params[:id])
+    binding.pry
+    authorize @daily_report
     if @daily_report.update(daily_report_params)
       @daily_report.save
       redirect_to child_daily_report_path(@child, @daily_report), notice: "report updated"
@@ -39,7 +41,8 @@ class DailyReportsController < ApplicationController
   end
 
   def destroy
-    @child.daily_reports.find(params[:id]).destroy
+    authorize @daily_report
+    @daily_report.destroy
     redirect_to root_path
   end
 
@@ -52,5 +55,9 @@ class DailyReportsController < ApplicationController
 
   def set_child
     @child = Child.find(params[:child_id])
+  end
+
+  def set_daily_report
+    @daily_report = @child.daily_reports.find(params[:id])
   end
 end

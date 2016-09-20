@@ -1,5 +1,9 @@
 <li>
   <p><%= link_to format_date(daily_report.date), child_daily_report_path(daily_report.child, daily_report) %>
+  <% if policy(daily_report).update? %>
   <%= link_to " - edit", edit_child_daily_report_path(daily_report.child, daily_report) %>
+  <% end %>
+  <% if policy(daily_report).destroy? %>
   <%= link_to " - delete", child_daily_report_path(daily_report.child, daily_report), method: :delete, data: { confirm: "Are you sure?"} %>
+  <% end %>
 </li>

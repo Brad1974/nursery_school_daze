@@ -17,14 +17,14 @@ class ChildPolicy < ApplicationPolicy
   end
 
   def edit?
-    @user.admin? || @user.children.include?(record)
+    @user.admin?
   end
 
   def update?
-    @user.admin? || @user.children.include?(record)
+    @user.admin?
   end
 
-  def destroy
+  def destroy?
     @user.admin?
   end
 
