@@ -3,6 +3,7 @@ class DailyReportsController < ApplicationController
 
   def show
     @daily_report = @child.daily_reports.find(params[:id])
+    authorize @daily_report
   end
 
   def index
@@ -24,6 +25,7 @@ class DailyReportsController < ApplicationController
 
   def edit
     @daily_report = @child.daily_reports.find(params[:id])
+    authorize @daily_report
   end
 
   def update
