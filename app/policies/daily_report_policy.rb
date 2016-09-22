@@ -1,29 +1,29 @@
 class DailyReportPolicy < ApplicationPolicy
 
   def show?
-    @user.admin? || @user.children.find{|c| c.id == record.child_id}
+    @user.guide || @user.admin? || @user.children.find{|c| c.id == record.child_id}
     # || @user.children.include?(record)
   end
 
   def new?
-    @user.admin?
+    @user.guide? || @user.admin?
   end
 
   def create?
-    @user.admin?
+    @user.guide? || @user.admin?
   end
   #
   def edit?
-    @user.admin?
+    @user.guide? || @user.admin?
     # || @user.children.include?(record)
   end
   #
   def update?
-    @user.admin?
+    @user.guide? || @user.admin?
   end
 
   def destroy?
-    @user.admin?
+    @user.guide? || @user.admin?
   end
 
   # class Scope

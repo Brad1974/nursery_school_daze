@@ -5,7 +5,7 @@ class ChildPolicy < ApplicationPolicy
   end
 
   def show?
-    @user.admin? || @user.children.include?(record)
+    @user.guide? || @user.admin? || @user.children.include?(record)
   end
 
   def new?
@@ -30,14 +30,13 @@ class ChildPolicy < ApplicationPolicy
 
   class Scope
     attr_reader :user, :scope
-
     def initialize(user, scope)
       @user = user
       @scope = scope
     end
 
     def resolve
-      if user.admin?
+      if user.admin? || user.guide?
         scope.all
       else
         scope.where(user: user)

@@ -18,9 +18,12 @@
           <ul class = "nav_ul">
             <% if current_user.user? %>
               <li><%= link_to "Your Enrolled Children", children_path %></li>
-            <% elsif current_user.admin? %>
+            <% elsif current_user.guide? || current_user.admin? %>
               <li><%= link_to "Roster", children_path %></li>
-              <li><%= link_to "Register new child", new_child_path %></li>
+              <% if current_user.admin? %>
+                <li><%= link_to "Register new child", new_child_path %></li>
+                <li><%= link_to "Administrative Control", users_path %></li>
+              <% end %>
             <% end %>
             <li><%= link_to "Announcements", page_path("announcements") %></li>
             <li><%= link_to "Parent Directory", page_path('parent_directory') %></li>
