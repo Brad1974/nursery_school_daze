@@ -19,11 +19,18 @@ class DailyReportsController < ApplicationController
     @daily_report = @child.daily_reports.build(daily_report_params)
     authorize @daily_report
     if @daily_report.save
-      ReportMailer.report_email(@daily_report).deliver
+      # ReportMailer.report_email(@daily_report).deliver
       redirect_to child_daily_report_path(@child, @daily_report), notice: "report generated"
     else
       render :new
     end
+  end
+
+  def communicate
+    ReportMailer.report_email(@daily_report).deliver
+    @daily_report.update(emailed: true)
+    redirect_to child_path(@child), notice: "report emailed"
+
   end
 
   def edit
@@ -31,7 +38,6 @@ class DailyReportsController < ApplicationController
   end
 
   def update
-    binding.pry
     authorize @daily_report
     if @daily_report.update(daily_report_params)
       @daily_report.save
