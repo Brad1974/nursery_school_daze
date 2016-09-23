@@ -1,7 +1,7 @@
 class DailyReportPolicy < ApplicationPolicy
 
   def show?
-    @user.guide || @user.admin? || @user.children.find{|c| c.id == record.child_id}
+    @user.guide? || @user.admin? || @user.children.find{|c| c.id == record.child_id}
     # || @user.children.include?(record)
   end
 

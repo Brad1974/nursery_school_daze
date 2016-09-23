@@ -19,6 +19,7 @@ class DailyReportsController < ApplicationController
     @daily_report = @child.daily_reports.build(daily_report_params)
     authorize @daily_report
     if @daily_report.save
+      ReportMailer.report_email(@daily_report).deliver
       redirect_to child_daily_report_path(@child, @daily_report), notice: "report generated"
     else
       render :new
