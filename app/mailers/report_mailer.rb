@@ -5,7 +5,7 @@ class ReportMailer < ActionMailer::Base
   def report_email(report)
     @daily_report = report
     @child = report.child
-    mail(to: @child.user.email, subject: 'Sample Email')
+    mail(to: @child.user.email, subject: 'Montessori House Daily Report')
   end
 
 end
