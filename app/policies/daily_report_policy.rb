@@ -14,7 +14,7 @@ class DailyReportPolicy < ApplicationPolicy
   end
 
   def communicate?
-    @user.guide || @user.admin?
+    (@user.guide? || @user.admin?) && !record.emailed && record.child.user
   end
   #
   def edit?
@@ -23,7 +23,7 @@ class DailyReportPolicy < ApplicationPolicy
   end
   #
   def update?
-    @user.guide? || @user.admin?
+    (@user.guide? || @user.admin?) && !record.emailed
   end
 
   def destroy?

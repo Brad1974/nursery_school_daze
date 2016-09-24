@@ -1,1 +1,10 @@
-<li><%= link_to child.name, child_path(child) %></li>
+<li>
+  <span> <%= link_to child.name, child_path(child) %> </span>
+  <% if policy(DailyReport).create? && child.reported_today %>
+    <span style="color: brown"> report sent for today</span>
+    
+
+
+  <% end %>
+
+</li>

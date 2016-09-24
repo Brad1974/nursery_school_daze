@@ -20,11 +20,15 @@ class Child < ApplicationRecord
   end
 
   def nap_average
-  nap_array = (self.daily_reports.collect{|d| d.nap_duration})
-  total = (nap_array.inject(0){|sum, x| sum + x })
-  if total > 0
-    return total / nap_array.count
+    nap_array = (self.daily_reports.collect{|d| d.nap_duration})
+    total = (nap_array.inject(0){|sum, x| sum + x })
+    if total > 0
+      return total / nap_array.count
+    end
   end
-end
+
+  def reported_today
+    return true if self.daily_reports.find_by(date: Date.today, emailed: true)
+  end
 
 end

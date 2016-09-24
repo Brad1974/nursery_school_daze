@@ -4,7 +4,7 @@
     <div class="column">
       <table class="table">
         <tbody>
-          <% @users.each do |user| %>
+          <% @users.all.reject{|u| u == current_user}.each do |user| %>
             <tr>
               <%= render user %>
             </tr>
