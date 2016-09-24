@@ -17,12 +17,16 @@
 			</br>
 		<% end %>
 
-  	<h4><%=@child.name%>'s Daily Reports</h4>
+  	<h4 class="top_banner">Daily Reports</h4>
 
   	<% if @child.daily_reports.empty? %>
     	<p> There are none yet </p>
   	<% else %>
-    	<%= render @child.daily_reports %>
+			<ul>
+
+							<%= render @child.daily_reports %>
+
+						</ul>
   	<% end %>
 
 

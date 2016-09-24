@@ -42,6 +42,7 @@ class DailyReport < ApplicationRecord
   end
 
   def narrative_array
+    binding.pry
     return [narrative, narrative1, narrative2, narrative3, narrative4].select{|n| !n.empty?}
   end
 
