@@ -56,7 +56,7 @@ class DailyReportsController < ApplicationController
   private
 
   def daily_report_params
-    params.require(:daily_report).permit(:child_id, :date, :wet_diapers, :poopy_diapers, :morning_snack, :lunch, :afternoon_snack, :clothing_needed, :need_diapers, :other_needed, :nap_start, :nap_end, :narrative, :no_nap_today, kind_acts_attributes: [:id, :_destroy, :act, :giver_id, :recipient_id, :daily_report_id])
+    params.require(:daily_report).permit(:child_id, :date, :wet_diapers, :poopy_diapers, :morning_snack, :lunch, :afternoon_snack, :clothing_needed, :need_diapers, :other_needed, :nap_start, :nap_end, :narrative, :narrative1, :narrative2, :narrative3, :narrative4, :no_nap_today, kind_acts_attributes: [:id, :_destroy, :act, :giver_id, :recipient_id, :daily_report_id])
   end
 
 

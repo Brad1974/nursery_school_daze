@@ -23,7 +23,11 @@
   <%= @daily_report.nap_statement %> (<%= format_time(@daily_report.nap_start) %> to <%=format_time(@daily_report.nap_end) %>)<% end %></p>
 
   <label>About My Day</label>
-  <div><%= simple_format(@daily_report.narrative) %></div>
+  <ul>
+    <% @daily_report.narrative_array.each do |n| %>
+      <li><%= n %></li>
+    <% end %>
+  </ul>
 
   <% if @daily_report.kind_acts.count > 0 %>
     	<p><b>Observed Acts of Kindess</b></p>

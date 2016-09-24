@@ -27,8 +27,6 @@ class DailyReport < ApplicationRecord
     end
   end
 
-
-
   def nap_statement
     if nap_end.to_i != nap_start.to_i
       hour = Time.at(nap_end - nap_start).utc.strftime("%-H")
@@ -41,6 +39,10 @@ class DailyReport < ApplicationRecord
         return "Your child slept #{minute} minutes"
       end
     end
+  end
+
+  def narrative_array
+    return [narrative, narrative1, narrative2, narrative3, narrative4].select{|n| !n.empty?}
   end
 
   def needs
