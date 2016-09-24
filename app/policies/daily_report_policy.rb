@@ -12,6 +12,10 @@ class DailyReportPolicy < ApplicationPolicy
   def create?
     @user.guide? || @user.admin?
   end
+
+  def communicate?
+    @user.guide || @user.admin?
+  end
   #
   def edit?
     @user.guide? || @user.admin?
