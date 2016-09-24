@@ -246,7 +246,7 @@
 
               <!-- START MAIN CONTENT AREA -->
               <div style="text-align: center">
-                <%= image_tag "m_logo.gif" %>
+                <%= image_tag attachments['m_logo.gif'].url %>
                 <h4>Daily Report for <%= @daily_report.child.name %></h4>
 
                 <p>Date: <%= format_date(@daily_report.date) %></p>
