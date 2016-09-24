@@ -7,7 +7,9 @@ class ReportMailer < ActionMailer::Base
     File.read('app/assets/images/m_logo.gif')
     @daily_report = report
     @child = report.child
-    mail(to: @child.user.email, subject: 'Montessori House Daily Report')
+    emails = [@child.user.email, @child.secondary_email]
+    emails
+    mail(to: emails, subject: 'Montessori House Daily Report')
   end
 
 end
