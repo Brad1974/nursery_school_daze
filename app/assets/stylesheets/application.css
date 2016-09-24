@@ -17,11 +17,8 @@
  */
 
 body {
+  padding-top: 70px;
   background-color: #fff;
-  font-family: 'Playfair Display', serif;
-}
-
-h1, h2, h3, h4, h5, h6 {
   font-family: 'Muli', sans-serif;
   font-weight: 300;
 }
@@ -36,49 +33,31 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0 auto;
 }
 
-.nav_ul {
-  width: 100%;
-  padding: 15px;
-  margin: 0px auto 0px auto;
-  border-top: 2px solid #000;
-  border-bottom: 1px solid #000;
-  text-align: center;
-  display: inline-block;
-  list-style-type: none;
- }
-
-.nav_ul li {
-  display: inline;
-  margin: 0px 3px;
-  padding: 15px;
+.navbar-fixed-top .nav {
+    padding: 40px 0;
 }
 
-.main-content {
- box-sizing: border-box;
- background-color: #d9d9d9;
- border: 2px solid black;
- padding: 2.0em 1.5em;
- color: black;
- font-family: 'Muli', sans-serif;
- font-weight: 300;
- }
+.navbar-fixed-top .navbar-brand {
+    padding: 0 70px;
+}
 
- .bottom-links {
-  box-sizing: border-box;
-  padding: 2.0em 1.5em;
-  font-family: 'Muli', sans-serif;
-  font-weight: 300;
-  }
+@media(min-width:768px) {
+    body {
+        padding-top: 100px; /* Required padding for .navbar-fixed-top. Change if height of navigation changes. */
+    }
 
- .form-content {
-   box-sizing: border-box;
+    .navbar-fixed-top .navbar-brand {
+        padding: 15px 0;
+    }
+}
+
+.main_content {
    background-color: #d9d9d9;
-   padding: 2.0em 1.5em;
-   border: 2px solid black;
-   color: #000000;
-   font-family: 'Muli', sans-serif;
-   font-weight: 300;
-   }
+    border: 2px solid black;
+    color: black;
+}
+
+
 
 
 .field_with_errors {

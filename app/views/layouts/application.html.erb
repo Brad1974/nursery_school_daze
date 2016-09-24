@@ -4,37 +4,18 @@
     <title>NurserySchoolDaze</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', "https://fonts.googleapis.com/css?family=Muli", media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <div class="container"</div>
-      <div class="top_banner">
-        <%= image_tag "m_logo.gif" %>
-      </div>
       <% if user_signed_in? %>
-        <div class="navbar">
-          <ul class = "nav_ul">
-            <% if current_user.user? %>
-              <li><%= link_to "Your Enrolled Children", children_path %></li>
-            <% elsif current_user.guide? || current_user.admin? %>
-              <li><%= link_to "Roster", children_path %></li>
-              <% if current_user.admin? %>
-                <li><%= link_to "Register new child", new_child_path %></li>
-                <li><%= link_to "Administrative Control", users_path %></li>
-              <% end %>
-            <% end %>
-            <li><%= link_to "Announcements", page_path("announcements") %></li>
-            <li><%= link_to "Parent Directory", page_path('parent_directory') %></li>
-            <li><%= link_to "sign out", destroy_user_session_path, method: "delete"  %></li>
-
-          </ul>
-        </div>
+        <%= render 'layouts/navbar' %>
     <p class="text-center" style="color:brown">signed in as: <%= current_user.name %> | access level: <%= current_user.role %> | <%= link_to 'edit your account', edit_user_registration_path %></p>
     <% end %>
     <p> <span class="alert"><%= notice %></span><span class="alert"><%= alert %></span></p>
-    <div class="col-md-8 col-md-offset-2">
+    <div class="col-md-8 col-md-offset-2 main_content">
       <%= yield %>
     </div>
   </body>
