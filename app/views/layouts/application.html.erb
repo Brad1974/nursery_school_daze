@@ -31,7 +31,7 @@
 
           </ul>
         </div>
-    <p class="text-center" style="color:brown">signed in as: <%= current_user.email %> | access level: <%= current_user.role %> | <%= link_to 'edit your user account', edit_user_registration_path %></p>
+    <p class="text-center" style="color:brown">signed in as: <%= current_user.name %> | access level: <%= current_user.role %> | <%= link_to 'edit your account', edit_user_registration_path %></p>
     <% end %>
     <p> <span class="alert"><%= notice %></span><span class="alert"><%= alert %></span></p>
     <div class="col-md-8 col-md-offset-2">

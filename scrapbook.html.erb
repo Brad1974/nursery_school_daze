@@ -1,0 +1,49 @@
+<h3>Daily Report for <%= @daily_report.child.name %></h4>
+
+<h5>Date:</h5> <%= format_date(@daily_report.date) %></br>
+
+
+<h4>Appetite</h4>
+<ul>
+  <li>morning snack: <%= @daily_report.morning_snack %></li>
+  <li>lunch: <%= @daily_report.lunch %></li>
+  <li>afternoon snack: <%= @daily_report.afternoon_snack %></li>
+</ul>
+
+<h4>Diaper Changes:</h4>
+<ul>
+  <li>Wet diapers: <%= @daily_report.wet_diapers %></li>
+  <li>Poopy diapers: <%= @daily_report.poopy_diapers %></li>
+</ul>
+
+<h4>Nap:</h4>
+<% if !@daily_report.nap_statement %>
+   no nap today </p>
+  <% else %>
+<%= @daily_report.nap_statement %> (<%= format_time(@daily_report.nap_start) %> to <%=format_time(@daily_report.nap_end) %>)<% end %></p>
+
+<h4>About Their Day</h4>
+<div><%= simple_format(@daily_report.narrative) %></div>
+
+<% if @daily_report.kind_acts.count > 0 %>
+    <p><b>Observed Acts of Kindess</b></p>
+    <ul>
+      <% @daily_report.kind_acts.each do |ka| %>
+       <li><%= ka.act %></li>
+       <ul><li>recipient of act: <%= ka.recipient.name %></li></ul>
+       <% end %>
+    </ul>
+  <% end %>
+
+<h4>Supplies Needed: </h4>
+<% if !@daily_report.needs.empty? %>
+
+  <ul>
+    <% @daily_report.needs.each do |n| %>
+      <li><%= n %></li>
+    <% end %>
+  </ul>
+  <% else %>
+   nothing! </p>
+  <% end %>
+</br>
