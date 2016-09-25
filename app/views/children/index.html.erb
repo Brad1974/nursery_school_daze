@@ -1,17 +1,36 @@
-	<h3 class="top_banner">
+	<h1 class="text-center">
 		<% if current_user.user? %>
 			Your Enrolled Children
 		<% elsif current_user.admin? %>
 			Roster
 			<% end %>
-		</h3>
+		<hr></h1>
 
-
-	<div class="main-content">
     <% if @children.count > 0 %>
-      <ul>
-        <%= render @children %>
-      </ul>
+
+			<% if current_user.user? %>
+				<ul>
+					<% @children.each do |child| %>
+						<li><%= link_to child.name, child_path(child) %></li>
+					<% end %>
+				</ul>
+			<% else %>
+
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>Student</th>
+							<th>Today's Report Generated?</th>
+							<th>Today's Report Completed?</th>
+							<th>Today's Report Emailed?</th>
+						</tr>
+					</thead>
+					<tbody>
+	        	<%= render @children %>
+	      	</tbody>
+				</table>
+				<% end %>
+
     <% else %>
 			<% if current_user.user? %>
   	 		<p>There are not yet any children associated with your account</p>
@@ -19,4 +38,3 @@
 				<p> No children registered yet </p>
 			<% end %>
     <% end %>
-  </div>

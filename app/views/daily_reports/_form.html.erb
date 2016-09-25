@@ -56,6 +56,9 @@
             <p><b><%= link_to_add_association 'Click here to add "kind act" observation', f, :kind_acts %></b></p>
           </div>
         </div>
+        <label>Report Status</label>
+        <p><%= f.label "complete?" %> <%= f.check_box :complete %></p>
+
 
     <%= f.submit :class => 'daily_report_submit'%>
 

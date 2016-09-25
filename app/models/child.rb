@@ -31,4 +31,11 @@ class Child < ApplicationRecord
     return true if self.daily_reports.find_by(date: Date.today, emailed: true)
   end
 
+  def started_today
+    return true if self.daily_reports.find_by(date: Date.today)
+  end
+
+  def completed_today
+    return true if self.daily_reports.find_by(date: Date.today, complete: true)
+  end
 end

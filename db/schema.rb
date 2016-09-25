@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160924043150) do
+ActiveRecord::Schema.define(version: 20160925215442) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,8 @@ ActiveRecord::Schema.define(version: 20160924043150) do
     t.text     "narrative2"
     t.text     "narrative3"
     t.text     "narrative4"
+    t.boolean  "complete"
+    t.boolean  "sent"
   end
 
   create_table "kind_acts", force: :cascade do |t|
