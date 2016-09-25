@@ -1,10 +1,10 @@
-	<h1 class="text-center">
+	<h3 class="text-center">
 		<% if current_user.user? %>
 			Your Enrolled Children
 		<% elsif current_user.admin? %>
 			Roster
 			<% end %>
-		<hr></h1>
+		<hr></h3>
 
     <% if @children.count > 0 %>
 

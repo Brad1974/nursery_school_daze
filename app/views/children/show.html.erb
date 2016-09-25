@@ -1,5 +1,5 @@
-<h3 class="top_banner"><%=@child.name%>'s Profile Page</h3>
-	<div class="main-content">
+<h3 class="text-center"><%=@child.name%>'s Profile Page</h3><hr>
+
 
   	<p>Birthdate: <%= format_date(@child.birthdate) %></p>
   	<p>Parents Email:
@@ -46,5 +46,3 @@
 			<%= link_to "Create a new report", new_child_daily_report_path(@child) %> |
 			<% end %>
 		<%= link_to "Return to Roster", children_path %>
-
-</div>

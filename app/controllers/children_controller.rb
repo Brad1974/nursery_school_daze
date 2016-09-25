@@ -32,7 +32,7 @@ class ChildrenController < ApplicationController
   def update
     authorize @child
     if @child.update(child_params)
-      redirect_to child_path(@child)
+      redirect_to child_path(@child), notice: 'profile updated'
     else
       render :edit
     end
