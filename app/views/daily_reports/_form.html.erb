@@ -11,7 +11,8 @@
 
 <% end %>
 
-<div class="form-content">
+<div class="well">
+
 
   <%= form_for [@child, @daily_report] do |f| %>
 
@@ -41,11 +42,11 @@
         </br>
 
         <label>About My Day</label>
-        <p><%= f.text_area :narrative %></p>
-        <p><%= f.text_area :narrative1 %></p>
-        <p><%= f.text_area :narrative2 %></p>
-        <p><%= f.text_area :narrative3 %></p>
-        <p><%= f.text_area :narrative4 %></p>
+        <p><%= f.text_area :narrative, class: "form-control" %></p>
+        <p><%= f.text_area :narrative1, class: "form-control" %></p>
+        <p><%= f.text_area :narrative2, class: "form-control" %></p>
+        <p><%= f.text_area :narrative3, class: "form-control" %></p>
+        <p><%= f.text_area :narrative4, class: "form-control" %></p>
         </br>
 
         <div id='kind_acts'>

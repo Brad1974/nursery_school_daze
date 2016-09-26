@@ -1,8 +1,8 @@
-<h3 class="top_banner">Edit User Access</h3>
+<h3 class="text-center">Edit User Access</h3>
 <div class="main-content">
   <div class="row">
     <div class="column">
-      <table class="table">
+      <table class="table table-sm">
         <tbody>
           <% @users.all.reject{|u| u == current_user}.each do |user| %>
             <tr>
