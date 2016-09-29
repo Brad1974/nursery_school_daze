@@ -5,7 +5,17 @@ $(document).on("turbolinks:load", function(){
   toggleNapFields();
   deleteBeforeSubmit();
 
+  var heights = $('.report').map(function() {
+       return $(this).height();
+   }).get(),
+
+   maxHeight = Math.max.apply(null, heights);
+
+   $('.report').height(maxHeight);
+
+
 });
+
 
 function setInput(){
   $('.nap').each(function(){

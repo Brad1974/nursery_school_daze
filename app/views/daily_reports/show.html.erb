@@ -1,56 +1,96 @@
-<h3 class="top_banner">Daily Report for <%= @daily_report.child.name %></h4>
+<h3 class="text-center">Daily Report for <%= @daily_report.child.name %></h4>
 
-<div class="main-content">
-  <label>Date:</label> <%= format_date(@daily_report.date) %></br>
+  <div class="list-group">
+    <h5 class="list-group-item">Date: <%= format_date(@daily_report.date) %></h5>
+  </div>
 
-  <label>Appetite</label>
-  <ul>
-    <li>morning snack: <%= @daily_report.morning_snack %></li>
-    <li>lunch: <%= @daily_report.lunch %></li>
-    <li>afternoon snack: <%= @daily_report.afternoon_snack %></li>
+  <div class="row">
+
+    <div class="col-md-6">
+      <ul class="list-group">
+        <li class="list-group-item report">
+          <h4>Appetite</h4>
+          <h5>morning snack: <%= @daily_report.morning_snack %></h5>
+          <h5>lunch: <%= @daily_report.lunch %></h5>
+          <h5>afternoon snack: <%= @daily_report.afternoon_snack %></h5>
+        </li>
+      </ul>
+  </div>
+
+  <div class="col-md-6">
+    <ul class="list-group">
+      <li class="list-group-item report">
+        <h4>Diaper Changes</h4>
+        <h5>Wet diapers: <%= @daily_report.wet_diapers %></h5>
+        <h5>Poopy diapers: <%= @daily_report.poopy_diapers %></h5>
+      </li>
+    </ul>
+  </div>
+
+</div>
+
+<div class="row">
+
+  <div class="col-md-6">
+  <ul class="list-group">
+    <li class="list-group-item report">
+      <h4>Nap</h4>
+      <h5>
+        <% if !@daily_report.nap_statement %>
+          No nap today
+        <% else %>
+          <%= @daily_report.nap_statement %> (<%= format_time(@daily_report.nap_start) %> to <%=format_time(@daily_report.nap_end) %>)
+        <% end %>
+      </h5>
+    </li>
   </ul>
+</div>
 
-  <label>Diaper Changes:</label>
-  <ul>
-    <li>Wet diapers: <%= @daily_report.wet_diapers %></li>
-    <li>Poopy diapers: <%= @daily_report.poopy_diapers %></li>
+  <div class="col-md-6">
+  <ul class="list-group">
+    <li class="list-group-item report">
+      <h4>Supplies Needed</h4>
+      <ul>
+        <% if !@daily_report.needs.empty? %>
+            <% @daily_report.needs.each do |n| %>
+              <li><%= n %></li>
+            <% end %>
+        <% else %>
+          <li> nothing! </li>
+        <% end %>
+      </ul>
+    </li>
   </ul>
+</div>
 
-  <label>Nap:</label>
-  <% if !@daily_report.nap_statement %>
-     no nap today </p>
-    <% else %>
-  <%= @daily_report.nap_statement %> (<%= format_time(@daily_report.nap_start) %> to <%=format_time(@daily_report.nap_end) %>)<% end %></p>
+</div>
 
-  <label>About My Day</label>
-  <ul>
-    <% @daily_report.narrative_array.each do |n| %>
-      <li><%= n %></li>
-    <% end %>
-  </ul>
-
-  <% if @daily_report.kind_acts.count > 0 %>
-    	<p><b>Observed Acts of Kindess</b></p>
-    	<ul>
-        <% @daily_report.kind_acts.each do |ka| %>
-    	   <li><%= ka.act %></li>
-         <ul><li>recipient of act: <%= ka.recipient.name %></li></ul>
-         <% end %>
-    	</ul>
-    <% end %>
-
-  <label>Supplies Needed: </label>
-  <% if !@daily_report.needs.empty? %>
-
-    <ul>
-      <% @daily_report.needs.each do |n| %>
+  <ul class="list-group">
+    <li class="list-group-item">
+      <h4>About My Day</h4>
+      <ul>
+      <% @daily_report.narrative_array.each do |n| %>
         <li><%= n %></li>
       <% end %>
     </ul>
-    <% else %>
-     nothing! </p>
-    <% end %>
-  </br>
+    </li>
+  </ul>
+
+  <% if @daily_report.kind_acts.count > 0 %>
+  <ul class="list-group">
+    <li class="list-group-item">
+      <h4>Caught Being Nice!</h4>
+      <ul>
+        <% @daily_report.kind_acts.each do |ka| %>
+    	   <li><%= ka.act %></li>
+         <ul><li>recipient of act: <%= ka.recipient.name %></li></ul>
+        <% end %>
+    	</ul>
+    </li>
+  </ul>
+  <% end %>
+
+
 
   <% if policy(@daily_report).edit? %>
     <%= link_to "edit report", edit_child_daily_report_path(@child, @daily_report) %></br>
@@ -62,4 +102,3 @@
   <% if policy(@daily_report).communicate? %>
     <%= link_to "email this report", child_daily_report_communicate_path(@child, @daily_report) %></br>
   <% end %>
-</div>
