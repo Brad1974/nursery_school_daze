@@ -11,58 +11,115 @@
 
 <% end %>
 
-<div class="well">
-
-
   <%= form_for [@child, @daily_report] do |f| %>
+  <div class="list-group">
+    <h5 class="list-group-item text-center">
+      <%= f.label :date %> <%= f.date_select :date, { :start_year => Time.now.year, :end_year => Time.now.year}%>
+    </h5>
+  </div>
 
-        <p><%= f.label :date %> <%= f.date_select :date, { :start_year => Time.now.year, :end_year => Time.now.year} %></p>
-        <p><%= f.label :wet_diapers %> <%= f.select :wet_diapers, ((0..10).map {|i| [i,i] }) %></p>
-        <p><%= f.label :poopy_diapers %> <%= f.select :poopy_diapers, ((0..10).map {|i| [i,i] }) %></p>
-        </br>
+  <div class="row">
 
-        <label>Appetite:</label>
-        <p><%= f.select :morning_snack, (["none", "small", "normal", "large"]) %> <%= f.label "Morning snack" %> </p>
-        <p><%= f.select :lunch, (["none", "small", "normal", "large"]) %> <%= f.label "Lunch" %></p>
-        <p><%= f.select :afternoon_snack, (["none", "small", "normal", "large"]) %> <%= f.label "Afternoon Snack" %></p>
-        </br>
+    <div class="col-md-6">
+      <ul class="list-group">
+        <li class="list-group-item">
+          <p>Appetite:</p>
+          <p><%= f.select :morning_snack, (["none", "small", "normal", "large"]) %> <%= f.label "Morning snack" %> </p>
+          <p><%= f.select :lunch, (["none", "small", "normal", "large"]) %> <%= f.label "Lunch" %></p>
+          <p><%= f.select :afternoon_snack, (["none", "small", "normal", "large"]) %> <%= f.label "Afternoon Snack" %></p>
+        </li>
+      </ul>
+    </div>
 
-        <label>Nap:</label></br>
-        <%= f.label "no_nap_today:" %><%= f.check_box :no_nap_today, id: "nap_check" %>
-        <div id="nap_entry">
-        <p><%= f.label "Start:" %> <%= f.text_field :nap_start, class: 'nap', value: format_time(f.object.nap_start) %></p>
-        <p><%= f.label "End:" %> <%= f.text_field :nap_end, class: 'nap', value: format_time(f.object.nap_end) %></p>
-        </div>
-        </br>
+    <div class="col-md-6">
+      <ul class="list-group">
+        <li class="list-group-item">
+          <p> Diaper Changes</p>
+          <p><%= f.select :wet_diapers, ((0..10).map {|i| [i,i] }) %> <%= f.label :wet_diapers %></p>
+          <p><%= f.select :poopy_diapers, ((0..10).map {|i| [i,i] }) %> <%= f.label :poopy_diapers %></p>
+        </li>
+      </ul>
+    </div>
 
-        <label>Needs</label>
-        <p><%= f.label "diapers?" %> <%= f.check_box :need_diapers %></p>
-        <p><%= f.label "need clothing?" %>  <%= f.text_field :clothing_needed %></p>
-        <p><%= f.label "other?" %> <%= f.text_field :other_needed %></p>
-        </br>
+  </div>
 
-        <label>About My Day</label>
-        <p><%= f.text_area :narrative, class: "form-control" %></p>
-        <p><%= f.text_area :narrative1, class: "form-control" %></p>
-        <p><%= f.text_area :narrative2, class: "form-control" %></p>
-        <p><%= f.text_area :narrative3, class: "form-control" %></p>
-        <p><%= f.text_area :narrative4, class: "form-control" %></p>
-        </br>
+  <div class="row">
 
-        <div id='kind_acts'>
-          <%= f.fields_for :kind_acts do |kind_act| %>
-            <%= render 'kind_act_fields', f: kind_act %>
-          <% end %>
-          <div class='links'>
-            <p><b><%= link_to_add_association 'Click here to add "kind act" observation', f, :kind_acts %></b></p>
+    <div class="col-md-6">
+      <ul class="list-group">
+        <li class="list-group-item">
+          <p> Nap </p>
+          <p><%= f.label "no_nap_today:" %> <%= f.check_box :no_nap_today, id: "nap_check" %></p>
+          <div id="nap_entry">
+            <p><%= f.label "Start:" %> <%= f.text_field :nap_start, class: 'nap form-control', value: format_time(f.object.nap_start) %></p>
+            <p><%= f.label "End:" %> <%= f.text_field :nap_end, class: 'nap form-control', value: format_time(f.object.nap_end) %></p>
           </div>
-        </div>
-        <label>Report Status</label>
-        <p><%= f.label "complete?" %> <%= f.check_box :complete %></p>
+        </li>
+      </ul>
+    </div>
+
+    <div class="col-md-6">
+      <ul class="list-group">
+        <li class="list-group-item">
+          <p> Supplies </p>
+          <p><%= f.label "diapers?" %> <%= f.check_box :need_diapers %></p>
+          <p><%= f.label "need clothing?" %>  <%= f.text_field :clothing_needed, class: "form-control" %></p>
+          <p><%= f.label "other?" %> <%= f.text_field :other_needed, class: "form-control" %></p>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="row">
+
+    <div class="col-md-6">
+      <ul class="list-group">
+        <li class="list-group-item">
+          <p>About My Day (each field a new paragraph in report)</p>
+          <p><%= f.text_area :narrative, class: "form-control" %></p>
+          <p><%= f.text_area :narrative1, class: "form-control" %></p>
+          <p><%= f.text_area :narrative2, class: "form-control" %></p>
+          <p><%= f.text_area :narrative3, class: "form-control" %></p>
+          <p><%= f.text_area :narrative4, class: "form-control" %></p>
+        </li>
+      </ul>
+    </div>
+
+    <div class="col-md-6">
+      <ul class="list-group">
+        <li class="list-group-item">
+          <p> Kind Acts </p>
+          <div id='kind_acts'>
+            <%= f.fields_for :kind_acts do |kind_act| %>
+              <%= render 'kind_act_fields', f: kind_act %>
+            <% end %>
+            <div class='links'>
+              <p><b><%= link_to_add_association 'Click here to add "kind act" observation', f, :kind_acts %></b></p>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="col-md-6">
+      <ul class="list-group">
+        <li class="list-group-item">
+          <p>Report Status</p>
+          <p><%= f.label "complete?" %> <%= f.check_box :complete %></p>
+        </li>
+      </ul>
+    </div>
+
+    <div class="col-md-6">
+      <%= f.submit :class => 'daily_report_submit', class: 'btn btn-primary'%>
+    </div>
+
+  </div>
 
 
-    <%= f.submit :class => 'daily_report_submit'%>
 
-  <% end %>
 
-</div>
+
+
+<% end %>

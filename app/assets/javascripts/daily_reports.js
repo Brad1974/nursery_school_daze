@@ -5,16 +5,19 @@ $(document).on("turbolinks:load", function(){
   toggleNapFields();
   deleteBeforeSubmit();
 
-  var heights = $('.report').map(function() {
-       return $(this).height();
-   }).get(),
+  matchHeight();
 
-   maxHeight = Math.max.apply(null, heights);
-
-   $('.report').height(maxHeight);
 
 
 });
+
+function matchHeight(){
+  var heights = $('.report').map(function() {
+  return $(this).height();
+  }).get(),
+   maxHeight = Math.max.apply(null, heights);
+   $('.report').height(maxHeight);
+}
 
 
 function setInput(){

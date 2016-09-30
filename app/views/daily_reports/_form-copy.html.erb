@@ -1,0 +1,70 @@
+<% if @daily_report.errors.any? %>
+
+  <h4> Some errors prohibited this report from being saved: </h4>
+
+  <% @daily_report.errors.each do |k,v| %>
+    <% if !v.empty? %>
+      <li><%= v %></li>
+    <% end %>
+  <% end %>
+
+
+<% end %>
+
+<div class="well">
+
+
+  <%= form_for [@child, @daily_report] do |f| %>
+
+        <p><%= f.label :date %> <%= f.date_select :date, { :start_year => Time.now.year, :end_year => Time.now.year}, class: 'form-control' %></p>
+
+        <label> Diaper Changes</label>
+        <p><%= f.select :wet_diapers, ((0..10).map {|i| [i,i] }) %> <%= f.label :wet_diapers %></p>
+        <p><%= f.select :poopy_diapers, ((0..10).map {|i| [i,i] }) %> <%= f.label :poopy_diapers %></p>
+        </br>
+
+        <label>Appetite:</label>
+        <p><%= f.select :morning_snack, (["none", "small", "normal", "large"]) %> <%= f.label "Morning snack" %> </p>
+        <p><%= f.select :lunch, (["none", "small", "normal", "large"]) %> <%= f.label "Lunch" %></p>
+        <p><%= f.select :afternoon_snack, (["none", "small", "normal", "large"]) %> <%= f.label "Afternoon Snack" %></p>
+        </br>
+
+        <label>Nap:</label></br>
+        <%= f.label "no_nap_today:" %><%= f.check_box :no_nap_today, id: "nap_check" %>
+        <div id="nap_entry">
+        <p><%= f.label "Start:" %> <%= f.text_field :nap_start, class: 'nap form-control', value: format_time(f.object.nap_start) %></p>
+        <p><%= f.label "End:" %> <%= f.text_field :nap_end, class: 'nap form-control', value: format_time(f.object.nap_end) %></p>
+        </div>
+        </br>
+
+        <label>Needs</label>
+        <p><%= f.label "diapers?" %> <%= f.check_box :need_diapers %></p>
+        <p><%= f.label "need clothing?" %>  <%= f.text_field :clothing_needed, class: "form-control" %></p>
+        <p><%= f.label "other?" %> <%= f.text_field :other_needed, class: "form-control" %></p>
+        </br>
+
+        <label>About My Day (each field a new paragraph in report)</label>
+        <p><%= f.text_area :narrative, class: "form-control" %></p>
+        <p><%= f.text_area :narrative1, class: "form-control" %></p>
+        <p><%= f.text_area :narrative2, class: "form-control" %></p>
+        <p><%= f.text_area :narrative3, class: "form-control" %></p>
+        <p><%= f.text_area :narrative4, class: "form-control" %></p>
+        </br>
+
+        <div id='kind_acts'>
+          <%= f.fields_for :kind_acts do |kind_act| %>
+            <%= render 'kind_act_fields', f: kind_act %>
+          <% end %>
+          <div class='links'>
+            <p><b><%= link_to_add_association 'Click here to add "kind act" observation', f, :kind_acts %></b></p>
+          </div>
+        </div>
+        <label>Report Status</label>
+        <p><%= f.label "complete?" %> <%= f.check_box :complete %></p>
+
+
+    <%= f.submit :class => 'daily_report_submit'%>
+
+  <% end %>
+
+</div>

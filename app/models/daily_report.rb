@@ -23,7 +23,7 @@ class DailyReport < ApplicationRecord
 
   def unique_date
     if self.child.daily_reports.find {|d| d.date == date && d.id != nil}
-      errors.add(:date, "Looks like you already submitted a report for this date.")
+      errors.add(:date, "Looks like you already created a report for this date.")
     end
   end
 

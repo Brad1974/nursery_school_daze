@@ -9,12 +9,14 @@
         <p><%= f.label :email %> <%=f.text_field :email, class: "form-control" %></p>
       </div>
 
+      <h4 class="blah"> Parent's children</h4>
+
       <div id='children'>
         <%= f.fields_for :children do |child| %>
           <%= render 'child_fields', f: child %>
         <% end %>
         <div class='links'>
-          <p><%= link_to_add_association 'Click here to add a child', f, :children %></p>
+          <p><%= link_to_add_association 'Click here to add a child (as many times as needed)', f, :children, class: 'add-child' %></p>
         </div>
       </div>
 
