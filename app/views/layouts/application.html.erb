@@ -9,7 +9,7 @@
   </head>
 
   <body>
-    <%= render 'layouts/navbar' %>
+    <%= render 'layouts/navbar' %></br>
 
     <div class="container">
       <% if current_user %><p class="text-center alert">signed in as: <%= current_user.name %> | access level: <%= current_user.role %> | <%= link_to 'edit your account', edit_user_registration_path %></p><% end%>
