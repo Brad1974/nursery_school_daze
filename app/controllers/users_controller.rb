@@ -6,12 +6,21 @@ class UsersController < ApplicationController
     @users = User.all
     authorize User
   end
+
+  def create
+    @user = User.new(secure_params)
+    @user.save
+    redirect_to users_path, :notice => "User Created."
+
+  end
   #
   # def show
   #   @user = User.find(params[:id])
   #   authorize @user
   # end
   #
+
+
   def update
     @user = User.find(params[:id])
     authorize @user
@@ -32,7 +41,7 @@ class UsersController < ApplicationController
   private
 
   def secure_params
-    params.require(:user).permit(:role)
+    params.require(:user).permit(:role, :first_name, :last_name, :email, :password)
   end
 
 end

@@ -1,7 +1,7 @@
-<h3 class="text-center">Edit User Access</h3>
-<div class="main-content">
+<h3 class="text-center">Administrative Control Panel</h3>
+
   <div class="row">
-    <div class="column">
+    <div class="col-md-8 col-md-offset-2">
       <table class="table table-sm">
         <tbody>
           <% @users.all.reject{|u| u == current_user}.each do |user| %>
@@ -11,6 +11,41 @@
           <% end %>
         </tbody>
       </table>
-    </div>
-  </div>
+
+
+
+
+<%= form_for User.new, url: create_user_path do |f| %>
+<div class="well">
+  <form>
+      <div class="form-group">
+        <p><%= f.label :first_name %> <%=f.text_field :first_name, class: "form-control" %></p>
+        <p><%= f.label :last_name %> <%=f.text_field :last_name, class: "form-control" %></p>
+      </div>
+
+      <div class="form-group">
+        <p><%= f.label :email %> <%=f.text_field :email, class: "form-control" %></p>
+      </div>
+
+      <div class="form-group">
+        <p><%= f.label :password %> <%=f.text_field :password, class: "form-control" %></p>
+      </div>
+
+
+      <div class="field">
+        <%= f.label :password_confirmation %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "off" %>
+      </div>
+
+      <%= f.submit :class => 'btn btn-primary' %>
+
+</div>
+    <% end %>
+  </form>
+
+
+
+
+
+</div>
 </div>
