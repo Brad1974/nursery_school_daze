@@ -9,13 +9,7 @@
 				<span> no parent account linked to this child </span>
 			<% end %>
 		</p>
-		<p>Secondary email:
-			<% if !@child.secondary_email.empty? %>
-				<%= @child.secondary_email %>
-			<% else %>
-				<span> none </span>
-			<% end %>
-		</p>
+		
   	<p>Average nap duration: <% if @child.nap_average %> <%= @child.nap_average.round(2) %> hours </p> <% else %> no naps recorded </p> <% end %>
   	<p>Observed Performing Acts of Kindness: <%=@child.kind_acts.count %> times</p>
   	<p>Observed Receiving Acts of Kindness: <%=@child.gifts.count %> times</p>
