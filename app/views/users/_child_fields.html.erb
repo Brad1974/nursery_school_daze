@@ -1,0 +1,12 @@
+<div class='nested-fields'>
+  <div class="field">
+    <div class="form-group">
+      <p><%= f.label :first_name %> <%=f.text_field :first_name, class: "form-control" %></p>
+      <p><%= f.label :last_name %> <%=f.text_field :last_name, class: "form-control" %></p>
+    </div>
+    <div class="form-group">
+      <p><%= f.label :birthdate %> <%= f.date_select :birthdate, { :start_year => Time.now.year - 5, :end_year => Time.now.year}%>
+    </div>
+  </div>
+  <%= link_to_remove_association "remove child", f %>
+</div>
