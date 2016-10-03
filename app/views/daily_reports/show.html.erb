@@ -1,14 +1,14 @@
 <h3 class="text-center">Daily Report for <%= @daily_report.child.name %></h4>
 
-  <div class="list-group">
-    <h5 class="list-group-item">Date: <%= format_date(@daily_report.date) %></h5>
+  <div class="list-group ">
+    <h5 class="list-group-item well">Date: <%= format_date(@daily_report.date) %></h5>
   </div>
 
   <div class="row">
 
     <div class="col-md-6">
       <ul class="list-group">
-        <li class="list-group-item report">
+        <li class="list-group-item report well">
           <h4>Appetite</h4>
           <h5>morning snack: <%= @daily_report.morning_snack %></h5>
           <h5>lunch: <%= @daily_report.lunch %></h5>
@@ -18,8 +18,8 @@
   </div>
 
   <div class="col-md-6">
-    <ul class="list-group">
-      <li class="list-group-item report">
+    <ul class="list-group ">
+      <li class="list-group-item report well">
         <h4>Diaper Changes</h4>
         <h5>Wet diapers: <%= @daily_report.wet_diapers %></h5>
         <h5>Poopy diapers: <%= @daily_report.poopy_diapers %></h5>
@@ -33,7 +33,7 @@
 
   <div class="col-md-6">
   <ul class="list-group">
-    <li class="list-group-item report">
+    <li class="list-group-item report well">
       <h4>Nap</h4>
       <h5>
         <% if !@daily_report.nap_statement %>
@@ -48,7 +48,7 @@
 
   <div class="col-md-6">
   <ul class="list-group">
-    <li class="list-group-item report">
+    <li class="list-group-item report well">
       <h4>Supplies Needed</h4>
       <ul>
         <% if !@daily_report.needs.empty? %>
@@ -66,7 +66,7 @@
 </div>
 
   <ul class="list-group">
-    <li class="list-group-item">
+    <li class="list-group-item well">
       <h4>About My Day</h4>
       <ul>
       <% @daily_report.narrative_array.each do |n| %>
@@ -78,7 +78,7 @@
 
   <% if @daily_report.kind_acts.count > 0 %>
   <ul class="list-group">
-    <li class="list-group-item">
+    <li class="list-group-item well">
       <h4>Caught Being Nice!</h4>
       <ul>
         <% @daily_report.kind_acts.each do |ka| %>

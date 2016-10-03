@@ -1,6 +1,9 @@
 <h3 class="text-center"><%=@child.name%>'s Profile Page</h3><hr>
 
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
 
+    <div class="well">
   	<p>Birthdate: <%= format_date(@child.birthdate) %></p>
   	<p>Parents Email:
 			<% if @child.user %>
@@ -28,9 +31,11 @@
 		<% else %>
 			</br>
 		<% end %>
+  </div>
 
-  	<h4 class="top_banner">Daily Reports</h4>
 
+  <h4 class="text-center">Daily Reports</h4>
+  <div class="well">
   	<% if @child.daily_reports.empty? %>
     	<p> There are none yet </p>
   	<% else %>
@@ -40,9 +45,12 @@
 
 						</ul>
   	<% end %>
+  </div>
 
 
 		<% if policy(DailyReport).create? %>
-			<%= link_to "Create a new report", new_child_daily_report_path(@child) %> |
+			<p><%= link_to "Create a new report", new_child_daily_report_path(@child) %></p>
 			<% end %>
-		<%= link_to "Return to Roster", children_path %>
+		<p><%= link_to "Return to Roster", children_path %></p>
+
+    </div></div>
