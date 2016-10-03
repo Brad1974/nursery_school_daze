@@ -18,63 +18,7 @@
 <br>
 <div class="well">
 <h4>Register New User</h4><hr>
-<% if @user.errors.any? %>
-<div id="error_explanation">
-        <h4><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h4>
-        <ul>
-          <% @user.errors.each do |k,v| %>
-            <% if k == :email %>
-            <li>Email <%= v %></li>
-            <% elsif k == :password %>
-            <li> Password <%= v %></li>
-            <% else %>
-            <li><%= v %></li>
-            <% end %>
-          <% end %>
-        </ul>
-     </div>
-
-<% end %>
-
-
-<%= form_for @user, url: create_user_path do |f| %>
-
-  <form>
-      <div class="form-group">
-        <p><%= f.label :first_name %> <%=f.text_field :first_name, class: "form-control" %></p>
-        <p><%= f.label :last_name %> <%=f.text_field :last_name, class: "form-control" %></p>
-      </div>
-
-      <div class="form-group">
-        <p><%= f.label :email %> <%=f.text_field :email, class: "form-control" %></p>
-      </div>
-
-      <h4 class="blah"> Parent's children</h4>
-
-      <div id='children'>
-        <%= f.fields_for :children do |child| %>
-          <%= render 'child_fields', f: child %>
-        <% end %>
-        <div class='links'>
-          <p><%= link_to_add_association 'Click here to add a child (as many times as needed)', f, :children, class: 'add-child' %></p>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <p><%= f.label :password %> <%=f.password_field :password, class: "form-control" %></p>
-      </div>
-
-
-      <div class="form-group">
-        <%= f.label :password_confirmation %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
-      </div>
-
-      <%= f.submit :class => 'btn btn-primary' %>
-
-</div>
-    <% end %>
-  </form>
+<%= render 'form', { user: @user, children: @children}%>
 
 
 
