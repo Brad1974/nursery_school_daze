@@ -7,9 +7,47 @@ $(document).on("turbolinks:load", function(){
 
   matchHeight();
 
+  hideNarratives();
+
+  addNarrative();
+
+
+
+
 
 
 });
+
+function hideNarratives(){
+  if ($('textarea').length > 0){
+
+  if ($('textarea[name="daily_report[narrative1]"').val().length == 0)
+  { $('textarea[name="daily_report[narrative1]"').hide() }
+
+  if ($('textarea[name="daily_report[narrative2]"').val().length == 0)
+  { $('textarea[name="daily_report[narrative2]"').hide() }
+
+  if ($('textarea[name="daily_report[narrative3]"').val().length == 0)
+  { $('textarea[name="daily_report[narrative3]"').hide() }
+
+
+  if ($('textarea[name="daily_report[narrative4]"').val().length == 0)
+  { $('textarea[name="daily_report[narrative4]"').hide() }
+}
+}
+
+function addNarrative(){
+  $('.add-narr').on('click', function(){
+    if ($('textarea[name="daily_report[narrative3]"').val().length > 0)
+      {$('textarea[name="daily_report[narrative4]"').show() }
+    if ($('textarea[name="daily_report[narrative2]"').val().length > 0)
+      {$('textarea[name="daily_report[narrative3]"').show() }
+    if ($('textarea[name="daily_report[narrative1]"').val().length > 0)
+      {$('textarea[name="daily_report[narrative2]"').show() }
+    if ($('textarea[name="daily_report[narrative]"').val().length > 0)
+      {$('textarea[name="daily_report[narrative1]"').show() }
+  });
+};
 
 function matchHeight(){
   var heights = $('.report').map(function() {

@@ -4,8 +4,8 @@ class Child < ApplicationRecord
   has_many :kind_acts, :class_name => KindAct, :foreign_key => 'giver_id'
   has_many :gifts, :class_name => KindAct, :foreign_key => 'recipient_id'
 
-  validates :first_name, presence: { message: "You must enter a first name" }
-  validates :last_name, presence: { message: "You must enter a last name" }
+  validates :first_name, presence: { message: "You must enter the child's first name" }
+  validates :last_name, presence: { message: "You must enter the child's last name" }
   validates :last_name, uniqueness: {scope: :first_name, message: "A child with that name is already enrolled" }
   validate :proper_age
 

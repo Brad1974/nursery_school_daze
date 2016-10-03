@@ -75,13 +75,14 @@
 
     <div class="col-md-6">
       <ul class="list-group">
-        <li class="list-group-item">
+        <li class="list-group-item narrative">
           <p>About My Day (each field a new paragraph in report)</p>
           <p><%= f.text_area :narrative, class: "form-control" %></p>
           <p><%= f.text_area :narrative1, class: "form-control" %></p>
           <p><%= f.text_area :narrative2, class: "form-control" %></p>
           <p><%= f.text_area :narrative3, class: "form-control" %></p>
           <p><%= f.text_area :narrative4, class: "form-control" %></p>
+          <input type="button" class="btn-primary btn-xs add-narr" value="add field">
         </li>
       </ul>
     </div>

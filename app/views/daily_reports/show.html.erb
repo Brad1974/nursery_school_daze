@@ -70,7 +70,7 @@
       <h4>About My Day</h4>
       <ul>
       <% @daily_report.narrative_array.each do |n| %>
-        <li><%= n %></li>
+        <li><%= simple_format(n) %></li>
       <% end %>
     </ul>
     </li>

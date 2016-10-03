@@ -1,4 +1,25 @@
+<%= binding.pry %>
+<% if @user.errors.any? %>
+<div id="error_explanation">
+        <h4><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h4>
+        <ul>
+          <% @user.errors.each do |k,v| %>
+            <% if k == :email %>
+            <li>Email <%= v %></li>
+            <% elsif k == :password %>
+            <li> Password <%= v %></li>
+            <% else %>
+            <li><%= v %></li>
+            <% end %>
+          <% end %>
+        </ul>
+     </div>
+
+<% end %>
+
+
 <%= form_for User.new, url: create_user_path do |f| %>
+
   <form>
       <div class="form-group">
         <p><%= f.label :first_name %> <%=f.text_field :first_name, class: "form-control" %></p>

@@ -1,4 +1,5 @@
 class DailyReport < ApplicationRecord
+  serialize :narrative
   belongs_to :child
   has_many :kind_acts
   accepts_nested_attributes_for :kind_acts, reject_if: :all_blank, allow_destroy: true

@@ -1,15 +1,13 @@
 <% if @child.errors.any? %>
 
-    <h5>
-        <%= pluralize(@child.errors.count, "error") %> prohibited this report from being saved:
-    </h5>
-
+  <div id="error_explanation">
+    <h4><%= pluralize(@child.errors.count, "error") %> prohibited this report from being saved:</h4>
     <ul>
       <% @child.errors.each do |k, v| %>
         <li><%= v %></li>
       <% end %>
     </ul>
-
+  </div>
 <% end %>
 
 

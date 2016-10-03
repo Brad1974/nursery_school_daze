@@ -4,13 +4,19 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
-    authorize User
+    @user = User.new
+    @children = @user.children
+    authorize @user
   end
 
   def create
+    @users = User.all
     @user = User.new(secure_params)
-    @user.save
-    redirect_to users_path, :notice => "User Created."
+    if @user.save
+      redirect_to users_path, :notice => "User Created."
+    else
+      render 'users/index'
+    end
 
   end
   #
