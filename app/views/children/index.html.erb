@@ -16,19 +16,27 @@
 				</ul>
 			<% else %>
 
-				<table class="table table-striped">
-					<thead>
-						<tr>
-							<th>Student</th>
-							<th>Today's Report Generated?</th>
-							<th>Today's Report Completed?</th>
-							<th>Today's Report Emailed?</th>
-						</tr>
-					</thead>
-					<tbody>
-	        	<%= render @children %>
-	      	</tbody>
-				</table>
+
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2">
+
+					<div class="well">
+					<table class="table">
+						<tbody>
+							<tr>
+								<th>Student</th>
+								<th>Today's Report Generated?</th>
+								<th>Today's Report Completed?</th>
+								<th>Today's Report Emailed?</th>
+							</tr>
+							<tr>
+								<%= render @children %>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+
 				<% end %>
 
     <% else %>

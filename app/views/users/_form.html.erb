@@ -3,13 +3,7 @@
         <h4><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h4>
         <ul>
           <% @user.errors.each do |k,v| %>
-            <% if k == :email %>
-            <li>Email <%= v %></li>
-            <% elsif k == :password %>
-            <li> Password <%= v %></li>
-            <% else %>
             <li><%= v %></li>
-            <% end %>
           <% end %>
         </ul>
      </div>
