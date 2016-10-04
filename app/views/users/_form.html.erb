@@ -2,9 +2,15 @@
 <div id="error_explanation">
         <h4><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h4>
         <ul>
-          <% @user.errors.each do |k,v| %>
+          <% @user.errors.each do |k, v| %>
+          <% if k == :email || k == :password %>
+            <li><%= k.to_s.capitalize %> <%= v %></li>
+          <% elsif k == :password_confirmation %>
+            <li><%= k.to_s.gsub!(/_/, ' ').capitalize %> <%= v %></li>
+          <% else %>
             <li><%= v %></li>
           <% end %>
+        <% end %>
         </ul>
      </div>
 
@@ -34,6 +40,7 @@
         </div>
       </div>
 
+<% if @user.new_record? %>
       <div class="form-group">
         <p><%= f.label :password %> <%=f.password_field :password, class: "form-control" %></p>
       </div>
@@ -43,7 +50,7 @@
         <%= f.label :password_confirmation %><br />
         <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
       </div>
-
+<% end %>
       <%= f.submit :class => 'btn btn-primary' %>
 
 </div>

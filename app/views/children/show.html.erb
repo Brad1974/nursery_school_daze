@@ -13,8 +13,8 @@
 			<% end %>
 		</p>
 		<p>Secondary email:
-			<% if !@child.secondary_email.nil? %>
-				<%= @child.secondary_email %>
+			<% if !@child.user.secondary_email.nil? %>
+				<%= @child.user.secondary_email %>
 			<% else %>
 				<span> none </span>
 			<% end %>

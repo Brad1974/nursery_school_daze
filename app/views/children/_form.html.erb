@@ -28,7 +28,6 @@
 
       <div class="form-group">
         <p><%= f.label 'attach to a parent account' %> <%= f.collection_select :user_id, User.all, :id, :name, :prompt => 'Select a parent', class: "form-control" %></p>
-        <p><%= f.label 'enter a seconday email if there is one' %><%= f.email_field :secondary_email, class: "form-control" %></p>
       </div>
 
       <%= f.submit :class => 'btn btn-primary' %>
