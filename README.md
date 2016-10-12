@@ -13,22 +13,26 @@ To install:
 
 1. Fork and clone this repo
 2. From your terminal, enter:
-```bash
-bundle install
-```
+  ```bash
+  bundle install
+  ```
 3. Then:
-```bash
-rake db:migrate
-```
+  ```bash
+  rake db:migrate
+  ```
 4. Open the db/seeds/rb file and modify the User information inside to create an administrator profile. Then in terminal, enter:
 
-```bash
-rake db:seed
-```
+  ```bash
+  rake db:seed
+  ```
 5. To utilize the email functionality, you must configure the web app to your email account. It is currently set up to work with gmail, but you will need to set environment variables for your username and password. If using a gmail account, create a file named .env in your root directory and inside of it set your gmail username and password as such:
 
-gmail_username=youremail@gmail.com
-gmail_password=yourpassword
+  ```
+    gmail_username=youremail@gmail.com
+    gmail_password=yourpassword
+  ```
+
+# Usage
 
 
 # license
