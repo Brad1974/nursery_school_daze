@@ -17,15 +17,7 @@ class UsersController < ApplicationController
     else
       render 'users/index'
     end
-
   end
-  #
-  # def show
-  #   @user = User.find(params[:id])
-  #   authorize @user
-  # end
-  #
-
 
   def update
     binding.pry

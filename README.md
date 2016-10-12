@@ -25,7 +25,7 @@ rake db:migrate
 ```bash
 rake db:seed
 ```
-5. To utilize the email functionality, you must configure the web app to your email account. It is currently set up to work with gmail. If using a gmail account, create a file named .env in your root directory and inside of it set your gmail username and password as such:
+5. To utilize the email functionality, you must configure the web app to your email account. It is currently set up to work with gmail, but you will need to set environment variables for your username and password. If using a gmail account, create a file named .env in your root directory and inside of it set your gmail username and password as such:
 
 gmail_username=youremail@gmail.com
 gmail_password=yourpassword

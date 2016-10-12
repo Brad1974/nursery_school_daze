@@ -13,7 +13,7 @@
 			<% end %>
 		</p>
 		<p>Secondary email:
-			<% if !@child.user.secondary_email.nil? %>
+			<% if @child.user && @child.user.secondary_email %>
 				<%= @child.user.secondary_email %>
 			<% else %>
 				<span> none </span>
@@ -40,17 +40,16 @@
     	<p> There are none yet </p>
   	<% else %>
 			<ul>
-
-							<%= render @child.daily_reports %>
-
-						</ul>
+				<%= render @child.daily_reports %>
+			</ul>
   	<% end %>
   </div>
 
 
-		<% if policy(DailyReport).create? %>
-			<p><%= link_to "Create a new report", new_child_daily_report_path(@child) %></p>
-			<% end %>
-		<p><%= link_to "Return to Roster", children_path %></p>
+	<% if policy(DailyReport).create? %>
+		<p><%= link_to "Create a new report", new_child_daily_report_path(@child) %></p>
+		<% end %>
+	<p><%= link_to "Return to Roster", children_path %></p>
 
-    </div></div>
+  </div>
+</div>

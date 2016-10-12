@@ -3,51 +3,40 @@
 			Your Enrolled Children
 		<% elsif current_user.admin? %>
 			Roster
-			<% end %>
-		</h3>
+		<% end %>
+	</h3>
 
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+			<div class="well">
 
-
-
-			<div class="row">
-				<div class="col-md-8 col-md-offset-2">
-
-					<div class="well">
-
-						<% if @children.count > 0 %>
-
-							<% if current_user.user? %>
-								<ul>
-									<% @children.each do |child| %>
-										<li><%= link_to child.name, child_path(child) %></li>
-									<% end %>
-								</ul>
-							<% else %>
-
-
-
-					<table class="table">
-						<tbody>
-							<tr>
-								<th>Student</th>
-								<th>Today's Report Generated?</th>
-								<th>Today's Report Completed?</th>
-								<th>Today's Report Emailed?</th>
-							</tr>
-							<tr>
-								<%= render @children %>
-							</tr>
-						</tbody>
-					</table>
+				<% if @children.count > 0 %>
+						<% if current_user.user? %>
+							<ul>
+								<% @children.each do |child| %>
+									<li><%= link_to child.name, child_path(child) %></li>
+								<% end %>
+							</ul>
+						<% else %>
+							<table class="table">
+							<tbody>
+								<tr>
+									<th>Student</th>
+									<th>Today's Report Generated?</th>
+									<th>Today's Report Completed?</th>
+									<th>Today's Report Emailed?</th>
+								</tr>
+								<tr>
+									<%= render @children %>
+								</tr>
+							</tbody>
+						</table>
+					<% end %>
 				</div>
-
-
-				<% end %>
-
-    <% else %>
-			<% if current_user.user? %>
-  	 		<p>There are not yet any children associated with your account</p>
-			<% else %>
-				<p> No children registered yet </p>
-			<% end %>
-    <% end %>
+    		<% else %>
+					<% if current_user.user? %>
+  	 				<p>There are not yet any children associated with your account</p>
+					<% else %>
+						<p> No children registered yet </p>
+					<% end %>
+    	<% end %>

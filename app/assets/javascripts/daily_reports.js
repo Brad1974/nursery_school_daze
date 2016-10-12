@@ -4,36 +4,28 @@ $(document).on("turbolinks:load", function(){
   setUpTimePicker();
   toggleNapFields();
   deleteBeforeSubmit();
-
   matchHeight();
-
   hideNarratives();
-
   addNarrative();
-
-
-
-
-
 
 });
 
 function hideNarratives(){
-  if ($('textarea').length > 0){
+  if ($('textarea').length > 0)
+  {
+    if ($('textarea[name="daily_report[narrative1]"').val().length == 0)
+    { $('textarea[name="daily_report[narrative1]"').hide() }
 
-  if ($('textarea[name="daily_report[narrative1]"').val().length == 0)
-  { $('textarea[name="daily_report[narrative1]"').hide() }
+    if ($('textarea[name="daily_report[narrative2]"').val().length == 0)
+    { $('textarea[name="daily_report[narrative2]"').hide() }
 
-  if ($('textarea[name="daily_report[narrative2]"').val().length == 0)
-  { $('textarea[name="daily_report[narrative2]"').hide() }
-
-  if ($('textarea[name="daily_report[narrative3]"').val().length == 0)
-  { $('textarea[name="daily_report[narrative3]"').hide() }
+    if ($('textarea[name="daily_report[narrative3]"').val().length == 0)
+    { $('textarea[name="daily_report[narrative3]"').hide() }
 
 
-  if ($('textarea[name="daily_report[narrative4]"').val().length == 0)
-  { $('textarea[name="daily_report[narrative4]"').hide() }
-}
+    if ($('textarea[name="daily_report[narrative4]"').val().length == 0)
+    { $('textarea[name="daily_report[narrative4]"').hide() }
+  }
 }
 
 function addNarrative(){
@@ -51,9 +43,9 @@ function addNarrative(){
 
 function matchHeight(){
   var heights = $('.report').map(function() {
-  return $(this).height();
-  }).get(),
-   maxHeight = Math.max.apply(null, heights);
+    return $(this).height();
+    }).get(),
+    maxHeight = Math.max.apply(null, heights);
    $('.report').height(maxHeight);
 }
 

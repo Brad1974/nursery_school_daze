@@ -8,7 +8,6 @@ class ReportMailer < ActionMailer::Base
     @daily_report = report
     @child = report.child
     emails = [@child.user.email, @child.user.secondary_email]
-    emails
     mail(to: emails, subject: 'Montessori House Daily Report')
   end
 
