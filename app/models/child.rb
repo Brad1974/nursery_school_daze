@@ -16,7 +16,7 @@ class Child < ApplicationRecord
   end
 
   def name
-    self.first_name + " " +self.last_name
+    self.first_name + " " + self.last_name
   end
 
   def nap_average
