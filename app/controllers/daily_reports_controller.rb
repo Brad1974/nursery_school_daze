@@ -26,10 +26,13 @@ class DailyReportsController < ApplicationController
   end
 
   def communicate
-    ReportMailer.report_email(@daily_report).deliver
-    @daily_report.update(emailed: true)
-    redirect_to child_path(@child), notice: "report emailed"
-
+    if @daily_report.complete
+      ReportMailer.report_email(@daily_report).deliver
+      @daily_report.update(emailed: true)
+      redirect_to child_path(@child), notice: "report emailed"
+    else
+      redirect_to child_daily_report_path(@child, @daily_report), notice: "report must be complete before you can email"
+    end
   end
 
   def edit

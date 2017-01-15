@@ -15,5 +15,4 @@
 //= require bootstrap-sass
 //= require turbolinks
 //= require cocoon
-//= require jt.timepicker
 //= require_tree .

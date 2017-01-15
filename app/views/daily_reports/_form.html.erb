@@ -22,7 +22,7 @@
 
     <div class="col-md-6">
       <ul class="list-group">
-        <li class="list-group-item">
+        <li class="list-group-item report">
           <p>Appetite:</p>
           <p><%= f.select :morning_snack, (["none", "small", "normal", "large"]) %> <%= f.label "Morning snack" %> </p>
           <p><%= f.select :lunch, (["none", "small", "normal", "large"]) %> <%= f.label "Lunch" %></p>
@@ -31,9 +31,9 @@
       </ul>
     </div>
 
-    <div class="col-md-6">
+    <div class="col-md-6 ">
       <ul class="list-group">
-        <li class="list-group-item">
+        <li class="list-group-item report">
           <p> Diaper Changes</p>
           <p><%= f.select :wet_diapers, ((0..10).map {|i| [i,i] }) %> <%= f.label :wet_diapers %></p>
           <p><%= f.select :poopy_diapers, ((0..10).map {|i| [i,i] }) %> <%= f.label :poopy_diapers %></p>
@@ -47,12 +47,12 @@
 
     <div class="col-md-6">
       <ul class="list-group">
-        <li class="list-group-item">
+        <li class="list-group-item report">
           <p> Nap </p>
           <p><%= f.label "no_nap_today:" %> <%= f.check_box :no_nap_today, id: "nap_check" %></p>
           <div id="nap_entry">
-            <p><%= f.label "Start:" %> <%= f.text_field :nap_start, class: 'nap form-control', value: format_time(f.object.nap_start) %></p>
-            <p><%= f.label "End:" %> <%= f.text_field :nap_end, class: 'nap form-control', value: format_time(f.object.nap_end) %></p>
+            <p><%= f.label "Start:" %> <%= f.time_select :nap_start, {prompt: {hour: 'Hour'}, start_hour: 12, end_hour: 17, minute_step: 5, ampm: true}, class: "nap" %></p>
+            <p><%= f.label "End:" %> <%= f.time_select :nap_end, {prompt: {hour: 'Hour'}, start_hour: 12, end_hour: 17, minute_step: 5, ampm: true}, class: "nap" %></p>
           </div>
         </li>
       </ul>
@@ -60,7 +60,7 @@
 
     <div class="col-md-6">
       <ul class="list-group">
-        <li class="list-group-item">
+        <li class="list-group-item report">
           <p> Supplies </p>
           <p><%= f.label "diapers?" %> <%= f.check_box :need_diapers %></p>
           <p><%= f.label "need clothing?" %>  <%= f.text_field :clothing_needed, class: "form-control" %></p>
@@ -75,7 +75,7 @@
 
     <div class="col-md-6">
       <ul class="list-group">
-        <li class="list-group-item narrative">
+        <li class="list-group-item narrative re">
           <p>About My Day (each field a new paragraph in report)</p>
           <p><%= f.text_area :narrative, class: "form-control" %></p>
           <p><%= f.text_area :narrative1, class: "form-control" %></p>
@@ -102,19 +102,30 @@
         </li>
       </ul>
     </div>
-
-    <div class="col-md-6">
-      <ul class="list-group">
-        <li class="list-group-item">
-          <p>Report Status</p>
-          <p><%= f.label "complete?" %> <%= f.check_box :complete %></p>
-        </li>
-      </ul>
-    </div>
-
-    <div class="col-md-6">
-      <%= f.submit :class => 'daily_report_submit', class: 'btn btn-primary'%>
-    </div>
   </div>
+  <div class="row">
+		<div class="col-md-12">
+      <div class="list-group text-center">
+
+			<%= f.submit :class => 'daily_report_submit', class: "btn btn-block btn-primary btn-lg"%>
+    </div>
+
+    </div>
+	</div>
+
+  <div class="row">
+		<div class="col-md-12">
+      <div class="list-group">
+        <div class="list-group-item checkbox-inline text-center">
+          <%= f.check_box :complete %>
+          <%= f.label "complete?" %>
+        </div>
+        </div>
+        </div>
+    	</div>
+
+
+
+
 
 <% end %>

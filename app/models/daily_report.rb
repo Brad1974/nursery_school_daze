@@ -10,10 +10,10 @@ class DailyReport < ApplicationRecord
   validate :consistent_time
 
   def consistent_time
-    if complete &&(no_nap_today == false) && ( (nap_end <= nap_start) || (nap_start == "Sat, 01 Jan 2000 03:00:00 UTC +00:00" || nap_end == "Sat, 01 Jan 2000 03:00:00 UTC +00:00"))
-      errors.add(:nap_start, "Your nap information is invalid - fix before marking report as complete")
-      errors.add(:nap_end, "")
-    end
+    if (!no_nap_today && (nap_end <= nap_start)) || (no_nap_today && nap_end != nap_start)
+        errors.add(:nap_start, "Your nap information is invalid")
+        errors.add(:nap_end, "")
+      end
   end
 
   def not_future_date
@@ -35,7 +35,7 @@ class DailyReport < ApplicationRecord
       if hour.to_i > 1
         return "Your child slept #{hour} hours and #{minute} minutes"
       elsif hour.to_i == 1
-        return "Your child slept #{hour} hour and #{minute} minutes"
+        return "Your child slept one hour and #{minute} minutes"
       elsif hour.to_i == 0
         return "Your child slept #{minute} minutes"
       end
