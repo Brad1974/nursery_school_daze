@@ -98,7 +98,7 @@
   <% if policy(@daily_report).destroy? %>
     <%= link_to "delete report", child_daily_report_path(@child, @daily_report), method: :delete, data: { confirm: "Are you sure?"} %></br>
   <% end %>
-  <%= link_to "Back to #{@child.name}'s profile", child_path(@child) %></p>
+  <%= link_to "Back to #{@child.name}'s profile", child_path(@child), class: "btn btn-primary btn-block" %></p>
   <% if policy(@daily_report).communicate? %>
     <%= link_to "email this report", child_daily_report_communicate_path(@child, @daily_report) %></br>
   <% end %>

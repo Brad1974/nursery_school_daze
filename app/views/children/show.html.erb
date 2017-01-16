@@ -32,10 +32,10 @@
   <p>Observed Receiving Acts of Kindness: <%=@child.gifts.count %> times</p>
 
 	<% if policy(@child).update? %>
-  	<%= link_to "edit profile", edit_child_path(@child) %> |
+  	<%= link_to "edit profile", edit_child_path(@child), class: "btn btn-default" %>
 	<% end %>
 	<% if policy(@child).destroy? %>
-  	<%= link_to "delete profile", child_path(@child), method: :delete, data: { confirm: "Are you sure?"} %>
+  	<%= link_to "delete profile", child_path(@child), method: :delete, data: { confirm: "Are you sure?"}, class: "btn btn-danger"  %>
 		<% end %>
 </div>
 

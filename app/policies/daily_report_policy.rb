@@ -15,7 +15,7 @@ class DailyReportPolicy < ApplicationPolicy
   def communicate?
     # there is proper authority, the report has not yet been emailed,
     # and the child has a parent associated with them to receive the email
-    (@user.guide? || @user.admin?) && !record.emailed && record.child.user
+    (@user.guide? || @user.admin?) && !record.emailed && record.child.user && record.complete
   end
 
   def edit?
