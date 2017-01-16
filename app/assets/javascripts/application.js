@@ -16,3 +16,7 @@
 //= require turbolinks
 //= require cocoon
 //= require_tree .
+
+setTimeout(function() {
+  $('#flash').remove();
+}, 2000);
