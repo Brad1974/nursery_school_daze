@@ -1,15 +1,18 @@
 <% if @daily_report.errors.any? %>
-
-  <h4> Some errors prohibited this report from being saved: </h4>
-
-  <% @daily_report.errors.each do |k,v| %>
-    <% if !v.empty? %>
-      <li><%= v %></li>
-    <% end %>
-  <% end %>
-
-
+  <div id="error_explanation" class="well">
+    <h2>Some errors prohibited this report from being saved:</h2>
+      <ul>
+        <% @daily_report.errors.each do |k, v| %>
+          <% if !v.empty? %>
+            <li> <%= v %></li>
+          <% end %>
+        <% end %>
+      </ul>
+  </div>
 <% end %>
+
+
+
 
   <%= form_for [@child, @daily_report] do |f| %>
   <div class="list-group">
@@ -118,7 +121,7 @@
       <div class="list-group">
         <div class="list-group-item checkbox-inline text-center">
           <%= f.check_box :complete %>
-          <%= f.label "complete?" %>
+          <%= f.label "Verified Complete?" %>
         </div>
         </div>
         </div>

@@ -1,14 +1,14 @@
-<li>
-  <%= link_to format_date(daily_report.date), child_daily_report_path(daily_report.child, daily_report) %>
-  <% if policy(daily_report).update? %>
-    <%= link_to " - edit", edit_child_daily_report_path(daily_report.child, daily_report) %>
-    <%= link_to " - delete", child_daily_report_path(daily_report.child, daily_report), method: :delete, data: { confirm: "Are you sure?"} %>
-
-  <% end %>
-  <% if policy(daily_report).communicate? && !daily_report.emailed %>
-    <%= link_to " - email", child_daily_report_communicate_path(daily_report.child, daily_report) %>
-  <% end %>
+<tr>
+  <td><%= link_to format_date(daily_report.date), child_daily_report_path(daily_report.child, daily_report) %></td>
   <% if !current_user.user? && daily_report.emailed %>
-     <span> - sent to parent </span>
+    <td colspan="3"><div class="btn btn-default btn-block">Has Been Sent To Parent </div></td>
+  <% elsif policy(daily_report).communicate? && !daily_report.emailed %>
+    <td><%= link_to "delete", child_daily_report_path(daily_report.child, daily_report), method: :delete, data: { confirm: "Are you sure?"}, class: "btn btn-danger" %></td>
+    <td><%= link_to "edit", edit_child_daily_report_path(daily_report.child, daily_report), class: "btn btn-warning" %></td>
+    <% if daily_report.complete %>
+      <td><%= link_to "email", child_daily_report_communicate_path(daily_report.child, daily_report), class: "btn btn-success" %></td>
+    <% else %>
+    <td><%= link_to "verify", edit_child_daily_report_path(daily_report.child, daily_report), class: "btn btn-warning" %></td>
+    <% end %>
   <% end %>
-</li>
+</tr>

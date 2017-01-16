@@ -9,13 +9,18 @@
   </head>
 
   <body>
+
     <%= render 'layouts/navbar' %></br>
 
     <div class="container">
-      <% if current_user %><p class="text-center alert">signed in as: <%= current_user.name %> | access level: <%= current_user.role %> </p><% end%>
-      <%= render partial: "layouts/flash_messages", flash: flash %>
-      <%= yield %>
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+          <%= render partial: "layouts/flash_messages", flash: flash %>
+          <%= yield %>
+        </div>
+      </div>
     </div>
+
   </body>
 
 </html>

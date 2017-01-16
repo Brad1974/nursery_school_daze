@@ -24,8 +24,8 @@
                 <li><%= link_to "Administrative Control", users_path %></li>
               <% end %>
             <% end %>
-            <li><%= link_to "Announcements", page_path("announcements") %></li>
-            <li><%= link_to "Parent Directory", page_path('parent_directory') %></li>
+            <li><a>Signed in as: <%= current_user.name %></a></li>
+            <li><a>Account Type: <%= current_user.role %></a></li>
             <li><%= link_to "Sign out", destroy_user_session_path, method: "delete"  %></li>
             <% end %>
 					</ul>

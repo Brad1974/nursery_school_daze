@@ -1,5 +1,5 @@
 <div class='nested-fields'>
-  <div class="field">
+
     <div class="form-group">
       <p><%= f.label "child's first name" %> <%=f.text_field :first_name, class: "form-control" %></p>
       <p><%= f.label "child's last name"  %> <%=f.text_field :last_name, class: "form-control" %></p>
@@ -7,6 +7,6 @@
     <div class="form-group">
       <p><%= f.label :birthdate %> <%= f.date_select :birthdate, { :start_year => Time.now.year - 5, :end_year => Time.now.year}%>
     </div>
-  </div>
-  <%= link_to_remove_association "remove child", f, class: 'child-field' %>
+
+  <p><%= link_to_remove_association "remove child", f, class: 'child-field btn btn-danger btn-block' %></p>
 </div>
