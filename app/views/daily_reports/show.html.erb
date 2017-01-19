@@ -91,14 +91,13 @@
   <% end %>
 
 
-
+  <% if policy(@daily_report).communicate? %>
+    <%= link_to "email this report", child_daily_report_communicate_path(@child, @daily_report), class: "btn btn-success btn-block" %></br>
+  <% end %>
   <% if policy(@daily_report).edit? %>
-    <%= link_to "edit report", edit_child_daily_report_path(@child, @daily_report) %></br>
+    <%= link_to "edit report", edit_child_daily_report_path(@child, @daily_report), class: "btn btn-default btn-block" %></br>
   <% end %>
   <% if policy(@daily_report).destroy? %>
-    <%= link_to "delete report", child_daily_report_path(@child, @daily_report), method: :delete, data: { confirm: "Are you sure?"} %></br>
+    <%= link_to "delete report", child_daily_report_path(@child, @daily_report), method: :delete, data: { confirm: "Are you sure?"}, class: "btn btn-danger btn-block"  %></br>
   <% end %>
   <%= link_to "Back to #{@child.name}'s profile", child_path(@child), class: "btn btn-primary btn-block" %></p>
-  <% if policy(@daily_report).communicate? %>
-    <%= link_to "email this report", child_daily_report_communicate_path(@child, @daily_report) %></br>
-  <% end %>
