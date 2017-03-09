@@ -17,6 +17,8 @@
 //= require cocoon
 //= require_tree .
 
-setTimeout(function() {
-  $('#flash').remove();
-}, 2000);
+$(document).ready(function(){
+  setTimeout(function(){
+    $('#flash').remove();
+  }, 5000);
+ })

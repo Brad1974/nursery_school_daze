@@ -31,12 +31,17 @@
       <p><%= f.label :role %> <%= f.select(:role, User.roles.keys.map {|role| [role.titleize,role]}) %></p>
     </div>
 
+    <div class="form-group">
+      <p> <%= f.label "Associate child to this parent" %>
+          <%= f.collection_select(:child_ids, Child.all, :id, :name)%></p>
+    </div>
+
     <div id='children'>
       <%= f.fields_for :children do |child| %>
         <%= render 'child_fields', f: child %>
       <% end %>
       <div class='links'>
-        <p><%= link_to_add_association 'Click here to register a child for this parent (as many times as needed)', f, :children, class: 'add-child btn btn-default btn-block' %></p>
+        <p><%= link_to_add_association 'Click here to register a new child for this parent (as many times as needed)', f, :children, class: 'add-child btn btn-default btn-block' %></p>
       </div>
     </div>
 

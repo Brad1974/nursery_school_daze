@@ -9,8 +9,9 @@ class UsersController < ApplicationController
   end
 
   def create
-    @users = User.all
     @user = User.new(secure_params)
+    @user.children << Child.find(params[:user][:child_ids][0])
+
     if @user.save
       redirect_to users_path, :notice => "User Created."
     else
@@ -38,7 +39,7 @@ class UsersController < ApplicationController
   private
 
   def secure_params
-    params.require(:user).permit(:role, :first_name, :last_name, :email, :password, :password_confirmation, children_attributes: [:first_name, :last_name, :birthdate])
+    params.require(:user).permit(:role, :first_name, :last_name, :email, :password, :password_confirmation, child_ids: [], children_attributes: [:first_name, :last_name, :birthdate])
   end
 
 end
